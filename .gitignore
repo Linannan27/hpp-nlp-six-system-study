@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+*.py[cod]
+data/raw/
+.DS_Store
+
+# Local document-generation utilities contain client/author metadata and are
+# not part of the public analysis or reproducibility workflow.
+src/create_full_empirical_manuscript.py
+src/create_unified_empirical_manuscript.py
+src/create_niw_prong1_prong3_outline.py
+src/revise_manuscript_docx.py
