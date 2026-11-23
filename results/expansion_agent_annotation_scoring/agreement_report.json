@@ -1,0 +1,55 @@
+{
+  "n": 100,
+  "fields": {
+    "primary_method": {
+      "raw_agreement": 0.9,
+      "cohen_kappa": 0.8624673359922981
+    },
+    "attr_fee_schedule_reference": {
+      "raw_agreement": 1.0,
+      "cohen_kappa": 1.0
+    },
+    "attr_case_rate": {
+      "raw_agreement": 1.0,
+      "cohen_kappa": 1.0
+    },
+    "attr_per_diem": {
+      "raw_agreement": 1.0,
+      "cohen_kappa": 1.0
+    },
+    "attr_percent_of_charge": {
+      "raw_agreement": 0.98,
+      "cohen_kappa": 0.9598715890850722
+    },
+    "attr_fixed_dollar": {
+      "raw_agreement": 0.95,
+      "cohen_kappa": 0.9026669262215299
+    },
+    "attr_outlier_stop_loss": {
+      "raw_agreement": 0.95,
+      "cohen_kappa": 0.8816568047337278
+    },
+    "attr_lesser_of": {
+      "raw_agreement": 0.99,
+      "cohen_kappa": 0.9816883354696941
+    },
+    "attr_bundle_packaging": {
+      "raw_agreement": 0.72,
+      "cohen_kappa": 0.3551358820819897
+    },
+    "attr_external_reference": {
+      "raw_agreement": 1.0,
+      "cohen_kappa": 1.0
+    },
+    "attr_length_of_stay": {
+      "raw_agreement": 0.99,
+      "cohen_kappa": 0.9743260590500642
+    },
+    "computability": {
+      "raw_agreement": 0.83,
+      "cohen_kappa": 0.6899507568849169
+    }
+  },
+  "macro_mean_kappa": 0.8839803074599412,
+  "conflict_rows": 51
+}
