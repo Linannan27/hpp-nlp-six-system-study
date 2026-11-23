@@ -1,0 +1,61 @@
+[
+  {
+    "name": "CMS v3.0 fictional West Mercy Hospital example",
+    "kind": "synthetic parser fixture",
+    "url": "https://raw.githubusercontent.com/CMSgov/hospital-price-transparency/master/examples/JSON/v3_json_format_example.json",
+    "retrieved": "2026-10-28",
+    "sha256": "267b3fb1fd45b15e394a1a85f86bf7b43494e57034045a1870e929fb68903b39"
+  },
+  {
+    "name": "Banner Churchill Community Hospital",
+    "kind": "real public hospital MRF",
+    "url": "https://images.pricetransparency.healthcare/public-mrfs/banner/880321712_banner-churchill-community-hospital_standardcharges.csv",
+    "retrieved": "2026-10-28",
+    "sha256": "44b421c9ce4b2a5daa9d87959d4be2c6d785f234bdaf96ac146675d9c3c1c768"
+  },
+  {
+    "name": "Martha's Vineyard Hospital",
+    "kind": "real public hospital MRF",
+    "url": "https://www.massgeneralbrigham.org/price-transparency/042104691_Marthas-Vineyard-Hospital_StandardCharges.zip",
+    "retrieved": "2026-10-28",
+    "sha256_zip": "15915861844595ebd37380295bc8ac5447c498d2a9ae47614eaf7e2d9d21a740",
+    "sha256_extracted_csv": "851464898e6cf6af5061f3018975593938cfcf391181bf9d342c420e913d464f"
+  },
+  {
+    "name": "OhioHealth Berger Hospital",
+    "kind": "real public hospital MRF",
+    "url": "https://www.ohiohealth.com/siteassets/patients-and-visitors/preparing-for-your-visit/out-of-pocket-estimates/384105653_berger-hospital_standardcharges.json",
+    "retrieved": "2026-10-28",
+    "sha256": "5da2b8edf6c651fcfaac00d966c8961cc36f3bd03b72b4b77c576f9427bd3e3e"
+  },
+  {
+    "name": "Orlando Health, Inc. (Orlando Regional Medical Center link)",
+    "kind": "real public hospital MRF; expansion system",
+    "source_page": "https://www.orlandohealth.com/patients-and-visitors/patient-financial-resources/financial-information-prior-to-care/pricing-transparency-guide",
+    "url": "https://cleverleypteusstatic.blob.core.windows.net/readable/591726273_orlando-health,-inc._standardcharges.json",
+    "retrieved": "2026-10-28",
+    "last_updated_on_in_file": "2026-04-01",
+    "sha256": "dea063b3f788f8698313761747a563771510750c43d91125d6ebe36021c2bfe3"
+  },
+  {
+    "name": "Stanford Health Care Tri-Valley",
+    "kind": "real public hospital MRF; held-out end-to-end case",
+    "source_page": "https://stanfordhealthcare.org/for-patients-visitors/price-transparency.html",
+    "url": "https://stanfordhealthcare.org/content/dam/valleycare/patients-visitors/941429628_stanford-health-care---tri-valley_standardcharges.json",
+    "retrieved": "2026-10-28",
+    "last_updated_on_in_file": "2026-04-01",
+    "file_bytes": 43065577,
+    "sha256": "57add70c54230e430986c15a577777920ec0accbbd22090d77f12ef46260ef1b"
+  },
+  {
+    "name": "South Miami Hospital (Baptist Health South Florida)",
+    "kind": "real public hospital MRF; expansion system",
+    "source_page": "https://baptisthealth.net/locations/hospitals/south-miami-hospital-pricing",
+    "url": "https://baptisthealth.net/-/media/Documents/Patient-Resources/Patient-Pricing/Apr-2026/590872594_south-miami-hospital_standardcharges.zip",
+    "retrieved": "2026-10-28",
+    "last_updated_on_in_file": "2026-03-30",
+    "zip_bytes": 24143862,
+    "sha256_zip": "18bb30339a71c41f21525e19e1c96da2f732e265f00912ebeb8a927f890f70e5",
+    "sha256_extracted_csv": "66b1f33a846b7ad4c6d912cdf3ef540913984e1623c68e512234e195f9098e46"
+  }
+]
