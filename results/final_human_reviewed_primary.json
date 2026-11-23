@@ -1,0 +1,3105 @@
+{
+  "design": {
+    "unit": "unique hospital-system mechanism template",
+    "split": "leave one entire hospital/system out",
+    "labels": "134 AI-assisted adjudicated labels from human_expert_reviewed_template_labels.csv; all labels were accepted without changes after review by two human experts",
+    "class_set": [
+      "case_rate",
+      "fee_schedule",
+      "hybrid",
+      "per_diem",
+      "percent_of_charge",
+      "unclear"
+    ],
+    "primary_metric": "macro-F1 across a fixed six-class label set",
+    "paired_evaluations": [
+      "2-fold stratified random expression CV (development-only)",
+      "leave-one-hospital/system-out (primary external design)"
+    ],
+    "warning": "Some held-out classes are absent from training hospitals; these support failures are reported rather than hidden.",
+    "software": "scikit-learn 1.6.1"
+  },
+  "models": {
+    "literal_rule_baseline": {
+      "pooled": {
+        "n": 134,
+        "accuracy": 0.746268656716418,
+        "macro_f1_all_six_classes": 0.7727931032030494,
+        "per_class": {
+          "case_rate": {
+            "precision": 1.0,
+            "recall": 0.42105263157894735,
+            "f1-score": 0.5925925925925926,
+            "support": 19.0
+          },
+          "fee_schedule": {
+            "precision": 0.84,
+            "recall": 0.5384615384615384,
+            "f1-score": 0.65625,
+            "support": 39.0
+          },
+          "hybrid": {
+            "precision": 0.7959183673469388,
+            "recall": 0.8863636363636364,
+            "f1-score": 0.8387096774193549,
+            "support": 44.0
+          },
+          "per_diem": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 2.0
+          },
+          "percent_of_charge": {
+            "precision": 0.9444444444444444,
+            "recall": 1.0,
+            "f1-score": 0.9714285714285714,
+            "support": 17.0
+          },
+          "unclear": {
+            "precision": 0.40625,
+            "recall": 1.0,
+            "f1-score": 0.5777777777777777,
+            "support": 13.0
+          },
+          "accuracy": 0.746268656716418,
+          "macro avg": {
+            "precision": 0.8311021352985639,
+            "recall": 0.8076463010673537,
+            "f1-score": 0.7727931032030494,
+            "support": 134.0
+          },
+          "weighted avg": {
+            "precision": 0.8217702516329916,
+            "recall": 0.746268656716418,
+            "f1-score": 0.7446390439634902,
+            "support": 134.0
+          }
+        }
+      },
+      "note": "Fixed rules do not train on the held-out data; abstain/other maps to unclear."
+    },
+    "word_tfidf_logistic": {
+      "folds": {
+        "Banner Churchill Community Hospital": {
+          "train_n": 127,
+          "test_n": 7,
+          "train_labels": [
+            "case_rate",
+            "fee_schedule",
+            "hybrid",
+            "per_diem",
+            "percent_of_charge",
+            "unclear"
+          ],
+          "unseen_test_labels": [],
+          "metrics": {
+            "n": 7,
+            "accuracy": 0.0,
+            "macro_f1_all_six_classes": 0.0,
+            "per_class": {
+              "case_rate": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 0.0
+              },
+              "fee_schedule": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 0.0
+              },
+              "hybrid": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 0.0
+              },
+              "per_diem": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 0.0
+              },
+              "percent_of_charge": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 1.0
+              },
+              "unclear": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 6.0
+              },
+              "accuracy": 0.0,
+              "macro avg": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 7.0
+              },
+              "weighted avg": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 7.0
+              }
+            }
+          }
+        },
+        "Berger Hospital": {
+          "train_n": 118,
+          "test_n": 16,
+          "train_labels": [
+            "case_rate",
+            "fee_schedule",
+            "hybrid",
+            "per_diem",
+            "percent_of_charge",
+            "unclear"
+          ],
+          "unseen_test_labels": [],
+          "metrics": {
+            "n": 16,
+            "accuracy": 0.6875,
+            "macro_f1_all_six_classes": 0.489057239057239,
+            "per_class": {
+              "case_rate": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 0.0
+              },
+              "fee_schedule": {
+                "precision": 0.8,
+                "recall": 1.0,
+                "f1-score": 0.8888888888888888,
+                "support": 4.0
+              },
+              "hybrid": {
+                "precision": 1.0,
+                "recall": 0.375,
+                "f1-score": 0.5454545454545454,
+                "support": 8.0
+              },
+              "per_diem": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 0.0
+              },
+              "percent_of_charge": {
+                "precision": 0.3333333333333333,
+                "recall": 1.0,
+                "f1-score": 0.5,
+                "support": 2.0
+              },
+              "unclear": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1-score": 1.0,
+                "support": 2.0
+              },
+              "accuracy": 0.6875,
+              "macro avg": {
+                "precision": 0.5222222222222223,
+                "recall": 0.5625,
+                "f1-score": 0.489057239057239,
+                "support": 16.0
+              },
+              "weighted avg": {
+                "precision": 0.8666666666666666,
+                "recall": 0.6875,
+                "f1-score": 0.6824494949494949,
+                "support": 16.0
+              }
+            }
+          }
+        },
+        "Martha's Vineyard Hospital": {
+          "train_n": 123,
+          "test_n": 11,
+          "train_labels": [
+            "case_rate",
+            "fee_schedule",
+            "hybrid",
+            "percent_of_charge",
+            "unclear"
+          ],
+          "unseen_test_labels": [
+            "per_diem"
+          ],
+          "metrics": {
+            "n": 11,
+            "accuracy": 0.09090909090909091,
+            "macro_f1_all_six_classes": 0.1111111111111111,
+            "per_class": {
+              "case_rate": {
+                "precision": 1.0,
+                "recall": 0.5,
+                "f1-score": 0.6666666666666666,
+                "support": 2.0
+              },
+              "fee_schedule": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 7.0
+              },
+              "hybrid": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 0.0
+              },
+              "per_diem": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 2.0
+              },
+              "percent_of_charge": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 0.0
+              },
+              "unclear": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 0.0
+              },
+              "accuracy": 0.09090909090909091,
+              "macro avg": {
+                "precision": 0.16666666666666666,
+                "recall": 0.08333333333333333,
+                "f1-score": 0.1111111111111111,
+                "support": 11.0
+              },
+              "weighted avg": {
+                "precision": 0.18181818181818182,
+                "recall": 0.09090909090909091,
+                "f1-score": 0.1212121212121212,
+                "support": 11.0
+              }
+            }
+          }
+        },
+        "Orlando Health, Inc.": {
+          "train_n": 86,
+          "test_n": 48,
+          "train_labels": [
+            "case_rate",
+            "fee_schedule",
+            "hybrid",
+            "per_diem",
+            "percent_of_charge",
+            "unclear"
+          ],
+          "unseen_test_labels": [],
+          "metrics": {
+            "n": 48,
+            "accuracy": 0.6458333333333334,
+            "macro_f1_all_six_classes": 0.5085120068610635,
+            "per_class": {
+              "case_rate": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 11.0
+              },
+              "fee_schedule": {
+                "precision": 0.8333333333333334,
+                "recall": 0.5,
+                "f1-score": 0.625,
+                "support": 10.0
+              },
+              "hybrid": {
+                "precision": 0.5588235294117647,
+                "recall": 1.0,
+                "f1-score": 0.7169811320754716,
+                "support": 19.0
+              },
+              "per_diem": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 0.0
+              },
+              "percent_of_charge": {
+                "precision": 1.0,
+                "recall": 0.8333333333333334,
+                "f1-score": 0.9090909090909091,
+                "support": 6.0
+              },
+              "unclear": {
+                "precision": 0.6666666666666666,
+                "recall": 1.0,
+                "f1-score": 0.8,
+                "support": 2.0
+              },
+              "accuracy": 0.6458333333333334,
+              "macro avg": {
+                "precision": 0.5098039215686274,
+                "recall": 0.5555555555555556,
+                "f1-score": 0.5085120068610635,
+                "support": 48.0
+              },
+              "weighted avg": {
+                "precision": 0.5475898692810458,
+                "recall": 0.6458333333333334,
+                "f1-score": 0.5609830617495711,
+                "support": 48.0
+              }
+            }
+          }
+        },
+        "SOUTH MIAMI HOSPITAL": {
+          "train_n": 102,
+          "test_n": 32,
+          "train_labels": [
+            "case_rate",
+            "fee_schedule",
+            "hybrid",
+            "per_diem",
+            "percent_of_charge",
+            "unclear"
+          ],
+          "unseen_test_labels": [],
+          "metrics": {
+            "n": 32,
+            "accuracy": 0.15625,
+            "macro_f1_all_six_classes": 0.09722222222222222,
+            "per_class": {
+              "case_rate": {
+                "precision": 0.4,
+                "recall": 0.6666666666666666,
+                "f1-score": 0.5,
+                "support": 6.0
+              },
+              "fee_schedule": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 16.0
+              },
+              "hybrid": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 3.0
+              },
+              "per_diem": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 0.0
+              },
+              "percent_of_charge": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 5.0
+              },
+              "unclear": {
+                "precision": 0.045454545454545456,
+                "recall": 0.5,
+                "f1-score": 0.08333333333333333,
+                "support": 2.0
+              },
+              "accuracy": 0.15625,
+              "macro avg": {
+                "precision": 0.07424242424242425,
+                "recall": 0.19444444444444442,
+                "f1-score": 0.09722222222222222,
+                "support": 32.0
+              },
+              "weighted avg": {
+                "precision": 0.0778409090909091,
+                "recall": 0.15625,
+                "f1-score": 0.09895833333333333,
+                "support": 32.0
+              }
+            }
+          }
+        },
+        "Stanford Health Care Tri-Valley": {
+          "train_n": 114,
+          "test_n": 20,
+          "train_labels": [
+            "case_rate",
+            "fee_schedule",
+            "hybrid",
+            "per_diem",
+            "percent_of_charge",
+            "unclear"
+          ],
+          "unseen_test_labels": [],
+          "metrics": {
+            "n": 20,
+            "accuracy": 0.9,
+            "macro_f1_all_six_classes": 0.5722222222222223,
+            "per_class": {
+              "case_rate": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 0.0
+              },
+              "fee_schedule": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1-score": 1.0,
+                "support": 2.0
+              },
+              "hybrid": {
+                "precision": 0.875,
+                "recall": 1.0,
+                "f1-score": 0.9333333333333333,
+                "support": 14.0
+              },
+              "per_diem": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 0.0
+              },
+              "percent_of_charge": {
+                "precision": 1.0,
+                "recall": 0.3333333333333333,
+                "f1-score": 0.5,
+                "support": 3.0
+              },
+              "unclear": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1-score": 1.0,
+                "support": 1.0
+              },
+              "accuracy": 0.9,
+              "macro avg": {
+                "precision": 0.6458333333333334,
+                "recall": 0.5555555555555556,
+                "f1-score": 0.5722222222222223,
+                "support": 20.0
+              },
+              "weighted avg": {
+                "precision": 0.9125,
+                "recall": 0.9,
+                "f1-score": 0.8783333333333333,
+                "support": 20.0
+              }
+            }
+          }
+        }
+      },
+      "pooled": {
+        "n": 134,
+        "accuracy": 0.4925373134328358,
+        "macro_f1_all_six_classes": 0.3721054507912653,
+        "per_class": {
+          "case_rate": {
+            "precision": 0.45454545454545453,
+            "recall": 0.2631578947368421,
+            "f1-score": 0.3333333333333333,
+            "support": 19.0
+          },
+          "fee_schedule": {
+            "precision": 0.55,
+            "recall": 0.28205128205128205,
+            "f1-score": 0.3728813559322034,
+            "support": 39.0
+          },
+          "hybrid": {
+            "precision": 0.6666666666666666,
+            "recall": 0.8181818181818182,
+            "f1-score": 0.7346938775510204,
+            "support": 44.0
+          },
+          "per_diem": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 2.0
+          },
+          "percent_of_charge": {
+            "precision": 0.6666666666666666,
+            "recall": 0.47058823529411764,
+            "f1-score": 0.5517241379310345,
+            "support": 17.0
+          },
+          "unclear": {
+            "precision": 0.16216216216216217,
+            "recall": 0.46153846153846156,
+            "f1-score": 0.24,
+            "support": 13.0
+          },
+          "accuracy": 0.4925373134328358,
+          "macro avg": {
+            "precision": 0.4166734916734917,
+            "recall": 0.38258628196708694,
+            "f1-score": 0.3721054507912653,
+            "support": 134.0
+          },
+          "weighted avg": {
+            "precision": 0.5437398388890926,
+            "recall": 0.4925373134328358,
+            "f1-score": 0.49031005352061013,
+            "support": 134.0
+          }
+        }
+      },
+      "pooled_seen_label_subset": {
+        "n": 132,
+        "accuracy": 0.5,
+        "macro_f1_all_six_classes": 0.3741841379362263,
+        "per_class": {
+          "case_rate": {
+            "precision": 0.45454545454545453,
+            "recall": 0.2631578947368421,
+            "f1-score": 0.3333333333333333,
+            "support": 19.0
+          },
+          "fee_schedule": {
+            "precision": 0.55,
+            "recall": 0.28205128205128205,
+            "f1-score": 0.3728813559322034,
+            "support": 39.0
+          },
+          "hybrid": {
+            "precision": 0.6792452830188679,
+            "recall": 0.8181818181818182,
+            "f1-score": 0.7422680412371134,
+            "support": 44.0
+          },
+          "per_diem": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 0.0
+          },
+          "percent_of_charge": {
+            "precision": 0.6666666666666666,
+            "recall": 0.47058823529411764,
+            "f1-score": 0.5517241379310345,
+            "support": 17.0
+          },
+          "unclear": {
+            "precision": 0.16666666666666666,
+            "recall": 0.46153846153846156,
+            "f1-score": 0.24489795918367346,
+            "support": 13.0
+          },
+          "accuracy": 0.5,
+          "macro avg": {
+            "precision": 0.4195206784829426,
+            "recall": 0.38258628196708694,
+            "f1-score": 0.3741841379362263,
+            "support": 132.0
+          },
+          "weighted avg": {
+            "precision": 0.556614818857529,
+            "recall": 0.5,
+            "f1-score": 0.5007460897222544,
+            "support": 132.0
+          }
+        }
+      },
+      "selective_prediction": [
+        {
+          "threshold": 0.4,
+          "coverage": 0.29850746268656714,
+          "covered_n": 40,
+          "accuracy_when_covered": 0.925,
+          "macro_f1_when_covered": 0.6256269949840401
+        },
+        {
+          "threshold": 0.5,
+          "coverage": 0.11194029850746269,
+          "covered_n": 15,
+          "accuracy_when_covered": 0.8666666666666667,
+          "macro_f1_when_covered": 0.5833333333333334
+        },
+        {
+          "threshold": 0.6,
+          "coverage": 0.05223880597014925,
+          "covered_n": 7,
+          "accuracy_when_covered": 0.8571428571428571,
+          "macro_f1_when_covered": 0.27777777777777773
+        },
+        {
+          "threshold": 0.7,
+          "coverage": 0.0,
+          "covered_n": 0,
+          "accuracy_when_covered": null,
+          "macro_f1_when_covered": null
+        },
+        {
+          "threshold": 0.8,
+          "coverage": 0.0,
+          "covered_n": 0,
+          "accuracy_when_covered": null,
+          "macro_f1_when_covered": null
+        },
+        {
+          "threshold": 0.9,
+          "coverage": 0.0,
+          "covered_n": 0,
+          "accuracy_when_covered": null,
+          "macro_f1_when_covered": null
+        }
+      ],
+      "development_stratified_random_cv": {
+        "warning": "Hospitals are mixed across folds; use only to quantify template leakage, not external validity.",
+        "pooled": {
+          "n": 134,
+          "accuracy": 0.7089552238805971,
+          "macro_f1_all_six_classes": 0.604819148223188,
+          "per_class": {
+            "case_rate": {
+              "precision": 0.5909090909090909,
+              "recall": 0.6842105263157895,
+              "f1-score": 0.6341463414634146,
+              "support": 19.0
+            },
+            "fee_schedule": {
+              "precision": 0.7027027027027027,
+              "recall": 0.6666666666666666,
+              "f1-score": 0.6842105263157895,
+              "support": 39.0
+            },
+            "hybrid": {
+              "precision": 0.8205128205128205,
+              "recall": 0.7272727272727273,
+              "f1-score": 0.7710843373493976,
+              "support": 44.0
+            },
+            "per_diem": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1-score": 0.0,
+              "support": 2.0
+            },
+            "percent_of_charge": {
+              "precision": 0.7142857142857143,
+              "recall": 0.8823529411764706,
+              "f1-score": 0.7894736842105263,
+              "support": 17.0
+            },
+            "unclear": {
+              "precision": 0.8181818181818182,
+              "recall": 0.6923076923076923,
+              "f1-score": 0.75,
+              "support": 13.0
+            },
+            "accuracy": 0.7089552238805971,
+            "macro avg": {
+              "precision": 0.6077653577653578,
+              "recall": 0.6088017589565577,
+              "f1-score": 0.604819148223188,
+              "support": 134.0
+            },
+            "weighted avg": {
+              "precision": 0.7277198732422613,
+              "recall": 0.7089552238805971,
+              "f1-score": 0.7151623469333814,
+              "support": 134.0
+            }
+          }
+        }
+      }
+    },
+    "char_tfidf_logistic": {
+      "folds": {
+        "Banner Churchill Community Hospital": {
+          "train_n": 127,
+          "test_n": 7,
+          "train_labels": [
+            "case_rate",
+            "fee_schedule",
+            "hybrid",
+            "per_diem",
+            "percent_of_charge",
+            "unclear"
+          ],
+          "unseen_test_labels": [],
+          "metrics": {
+            "n": 7,
+            "accuracy": 0.0,
+            "macro_f1_all_six_classes": 0.0,
+            "per_class": {
+              "case_rate": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 0.0
+              },
+              "fee_schedule": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 0.0
+              },
+              "hybrid": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 0.0
+              },
+              "per_diem": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 0.0
+              },
+              "percent_of_charge": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 1.0
+              },
+              "unclear": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 6.0
+              },
+              "accuracy": 0.0,
+              "macro avg": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 7.0
+              },
+              "weighted avg": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 7.0
+              }
+            }
+          }
+        },
+        "Berger Hospital": {
+          "train_n": 118,
+          "test_n": 16,
+          "train_labels": [
+            "case_rate",
+            "fee_schedule",
+            "hybrid",
+            "per_diem",
+            "percent_of_charge",
+            "unclear"
+          ],
+          "unseen_test_labels": [],
+          "metrics": {
+            "n": 16,
+            "accuracy": 0.75,
+            "macro_f1_all_six_classes": 0.521164021164021,
+            "per_class": {
+              "case_rate": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 0.0
+              },
+              "fee_schedule": {
+                "precision": 0.8,
+                "recall": 1.0,
+                "f1-score": 0.8888888888888888,
+                "support": 4.0
+              },
+              "hybrid": {
+                "precision": 1.0,
+                "recall": 0.5,
+                "f1-score": 0.6666666666666666,
+                "support": 8.0
+              },
+              "per_diem": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 0.0
+              },
+              "percent_of_charge": {
+                "precision": 0.4,
+                "recall": 1.0,
+                "f1-score": 0.5714285714285714,
+                "support": 2.0
+              },
+              "unclear": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1-score": 1.0,
+                "support": 2.0
+              },
+              "accuracy": 0.75,
+              "macro avg": {
+                "precision": 0.5333333333333333,
+                "recall": 0.5833333333333334,
+                "f1-score": 0.521164021164021,
+                "support": 16.0
+              },
+              "weighted avg": {
+                "precision": 0.875,
+                "recall": 0.75,
+                "f1-score": 0.751984126984127,
+                "support": 16.0
+              }
+            }
+          }
+        },
+        "Martha's Vineyard Hospital": {
+          "train_n": 123,
+          "test_n": 11,
+          "train_labels": [
+            "case_rate",
+            "fee_schedule",
+            "hybrid",
+            "percent_of_charge",
+            "unclear"
+          ],
+          "unseen_test_labels": [
+            "per_diem"
+          ],
+          "metrics": {
+            "n": 11,
+            "accuracy": 0.09090909090909091,
+            "macro_f1_all_six_classes": 0.08333333333333333,
+            "per_class": {
+              "case_rate": {
+                "precision": 0.5,
+                "recall": 0.5,
+                "f1-score": 0.5,
+                "support": 2.0
+              },
+              "fee_schedule": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 7.0
+              },
+              "hybrid": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 0.0
+              },
+              "per_diem": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 2.0
+              },
+              "percent_of_charge": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 0.0
+              },
+              "unclear": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 0.0
+              },
+              "accuracy": 0.09090909090909091,
+              "macro avg": {
+                "precision": 0.08333333333333333,
+                "recall": 0.08333333333333333,
+                "f1-score": 0.08333333333333333,
+                "support": 11.0
+              },
+              "weighted avg": {
+                "precision": 0.09090909090909091,
+                "recall": 0.09090909090909091,
+                "f1-score": 0.09090909090909091,
+                "support": 11.0
+              }
+            }
+          }
+        },
+        "Orlando Health, Inc.": {
+          "train_n": 86,
+          "test_n": 48,
+          "train_labels": [
+            "case_rate",
+            "fee_schedule",
+            "hybrid",
+            "per_diem",
+            "percent_of_charge",
+            "unclear"
+          ],
+          "unseen_test_labels": [],
+          "metrics": {
+            "n": 48,
+            "accuracy": 0.6041666666666666,
+            "macro_f1_all_six_classes": 0.4484848484848485,
+            "per_class": {
+              "case_rate": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 11.0
+              },
+              "fee_schedule": {
+                "precision": 1.0,
+                "recall": 0.2,
+                "f1-score": 0.3333333333333333,
+                "support": 10.0
+              },
+              "hybrid": {
+                "precision": 0.5277777777777778,
+                "recall": 1.0,
+                "f1-score": 0.6909090909090909,
+                "support": 19.0
+              },
+              "per_diem": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 0.0
+              },
+              "percent_of_charge": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1-score": 1.0,
+                "support": 6.0
+              },
+              "unclear": {
+                "precision": 0.5,
+                "recall": 1.0,
+                "f1-score": 0.6666666666666666,
+                "support": 2.0
+              },
+              "accuracy": 0.6041666666666666,
+              "macro avg": {
+                "precision": 0.5046296296296297,
+                "recall": 0.5333333333333333,
+                "f1-score": 0.4484848484848485,
+                "support": 48.0
+              },
+              "weighted avg": {
+                "precision": 0.5630787037037037,
+                "recall": 0.6041666666666666,
+                "f1-score": 0.4957070707070707,
+                "support": 48.0
+              }
+            }
+          }
+        },
+        "SOUTH MIAMI HOSPITAL": {
+          "train_n": 102,
+          "test_n": 32,
+          "train_labels": [
+            "case_rate",
+            "fee_schedule",
+            "hybrid",
+            "per_diem",
+            "percent_of_charge",
+            "unclear"
+          ],
+          "unseen_test_labels": [],
+          "metrics": {
+            "n": 32,
+            "accuracy": 0.09375,
+            "macro_f1_all_six_classes": 0.061507936507936505,
+            "per_class": {
+              "case_rate": {
+                "precision": 0.25,
+                "recall": 0.3333333333333333,
+                "f1-score": 0.2857142857142857,
+                "support": 6.0
+              },
+              "fee_schedule": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 16.0
+              },
+              "hybrid": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 3.0
+              },
+              "per_diem": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 0.0
+              },
+              "percent_of_charge": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 5.0
+              },
+              "unclear": {
+                "precision": 0.045454545454545456,
+                "recall": 0.5,
+                "f1-score": 0.08333333333333333,
+                "support": 2.0
+              },
+              "accuracy": 0.09375,
+              "macro avg": {
+                "precision": 0.04924242424242425,
+                "recall": 0.13888888888888887,
+                "f1-score": 0.061507936507936505,
+                "support": 32.0
+              },
+              "weighted avg": {
+                "precision": 0.04971590909090909,
+                "recall": 0.09375,
+                "f1-score": 0.058779761904761904,
+                "support": 32.0
+              }
+            }
+          }
+        },
+        "Stanford Health Care Tri-Valley": {
+          "train_n": 114,
+          "test_n": 20,
+          "train_labels": [
+            "case_rate",
+            "fee_schedule",
+            "hybrid",
+            "per_diem",
+            "percent_of_charge",
+            "unclear"
+          ],
+          "unseen_test_labels": [],
+          "metrics": {
+            "n": 20,
+            "accuracy": 0.95,
+            "macro_f1_all_six_classes": 0.6275862068965518,
+            "per_class": {
+              "case_rate": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 0.0
+              },
+              "fee_schedule": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1-score": 1.0,
+                "support": 2.0
+              },
+              "hybrid": {
+                "precision": 0.9333333333333333,
+                "recall": 1.0,
+                "f1-score": 0.9655172413793104,
+                "support": 14.0
+              },
+              "per_diem": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 0.0
+              },
+              "percent_of_charge": {
+                "precision": 1.0,
+                "recall": 0.6666666666666666,
+                "f1-score": 0.8,
+                "support": 3.0
+              },
+              "unclear": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1-score": 1.0,
+                "support": 1.0
+              },
+              "accuracy": 0.95,
+              "macro avg": {
+                "precision": 0.6555555555555556,
+                "recall": 0.611111111111111,
+                "f1-score": 0.6275862068965518,
+                "support": 20.0
+              },
+              "weighted avg": {
+                "precision": 0.9533333333333334,
+                "recall": 0.95,
+                "f1-score": 0.9458620689655174,
+                "support": 20.0
+              }
+            }
+          }
+        }
+      },
+      "pooled": {
+        "n": 134,
+        "accuracy": 0.47761194029850745,
+        "macro_f1_all_six_classes": 0.3575084175084175,
+        "per_class": {
+          "case_rate": {
+            "precision": 0.2727272727272727,
+            "recall": 0.15789473684210525,
+            "f1-score": 0.2,
+            "support": 19.0
+          },
+          "fee_schedule": {
+            "precision": 0.5,
+            "recall": 0.20512820512820512,
+            "f1-score": 0.2909090909090909,
+            "support": 39.0
+          },
+          "hybrid": {
+            "precision": 0.6727272727272727,
+            "recall": 0.8409090909090909,
+            "f1-score": 0.7474747474747475,
+            "support": 44.0
+          },
+          "per_diem": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 2.0
+          },
+          "percent_of_charge": {
+            "precision": 0.7692307692307693,
+            "recall": 0.5882352941176471,
+            "f1-score": 0.6666666666666666,
+            "support": 17.0
+          },
+          "unclear": {
+            "precision": 0.16216216216216217,
+            "recall": 0.46153846153846156,
+            "f1-score": 0.24,
+            "support": 13.0
+          },
+          "accuracy": 0.47761194029850745,
+          "macro avg": {
+            "precision": 0.39614124614124613,
+            "recall": 0.37561763142258503,
+            "f1-score": 0.3575084175084175,
+            "support": 134.0
+          },
+          "weighted avg": {
+            "precision": 0.5184093236332042,
+            "recall": 0.47761194029850745,
+            "f1-score": 0.46632594602743854,
+            "support": 134.0
+          }
+        }
+      },
+      "pooled_seen_label_subset": {
+        "n": 132,
+        "accuracy": 0.48484848484848486,
+        "macro_f1_all_six_classes": 0.35955571036030803,
+        "per_class": {
+          "case_rate": {
+            "precision": 0.3,
+            "recall": 0.15789473684210525,
+            "f1-score": 0.20689655172413793,
+            "support": 19.0
+          },
+          "fee_schedule": {
+            "precision": 0.5333333333333333,
+            "recall": 0.20512820512820512,
+            "f1-score": 0.2962962962962963,
+            "support": 39.0
+          },
+          "hybrid": {
+            "precision": 0.6727272727272727,
+            "recall": 0.8409090909090909,
+            "f1-score": 0.7474747474747475,
+            "support": 44.0
+          },
+          "per_diem": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 0.0
+          },
+          "percent_of_charge": {
+            "precision": 0.7692307692307693,
+            "recall": 0.5882352941176471,
+            "f1-score": 0.6666666666666666,
+            "support": 17.0
+          },
+          "unclear": {
+            "precision": 0.16216216216216217,
+            "recall": 0.46153846153846156,
+            "f1-score": 0.24,
+            "support": 13.0
+          },
+          "accuracy": 0.48484848484848486,
+          "macro avg": {
+            "precision": 0.40624225624225624,
+            "recall": 0.37561763142258503,
+            "f1-score": 0.35955571036030803,
+            "support": 132.0
+          },
+          "weighted avg": {
+            "precision": 0.540038115038115,
+            "recall": 0.48484848484848486,
+            "f1-score": 0.47597585045860913,
+            "support": 132.0
+          }
+        }
+      },
+      "selective_prediction": [
+        {
+          "threshold": 0.4,
+          "coverage": 0.373134328358209,
+          "covered_n": 50,
+          "accuracy_when_covered": 0.9,
+          "macro_f1_when_covered": 0.6349206349206349
+        },
+        {
+          "threshold": 0.5,
+          "coverage": 0.11940298507462686,
+          "covered_n": 16,
+          "accuracy_when_covered": 0.9375,
+          "macro_f1_when_covered": 0.63003663003663
+        },
+        {
+          "threshold": 0.6,
+          "coverage": 0.04477611940298507,
+          "covered_n": 6,
+          "accuracy_when_covered": 1.0,
+          "macro_f1_when_covered": 0.3333333333333333
+        },
+        {
+          "threshold": 0.7,
+          "coverage": 0.0,
+          "covered_n": 0,
+          "accuracy_when_covered": null,
+          "macro_f1_when_covered": null
+        },
+        {
+          "threshold": 0.8,
+          "coverage": 0.0,
+          "covered_n": 0,
+          "accuracy_when_covered": null,
+          "macro_f1_when_covered": null
+        },
+        {
+          "threshold": 0.9,
+          "coverage": 0.0,
+          "covered_n": 0,
+          "accuracy_when_covered": null,
+          "macro_f1_when_covered": null
+        }
+      ],
+      "development_stratified_random_cv": {
+        "warning": "Hospitals are mixed across folds; use only to quantify template leakage, not external validity.",
+        "pooled": {
+          "n": 134,
+          "accuracy": 0.6194029850746269,
+          "macro_f1_all_six_classes": 0.5423389776330954,
+          "per_class": {
+            "case_rate": {
+              "precision": 0.3076923076923077,
+              "recall": 0.42105263157894735,
+              "f1-score": 0.35555555555555557,
+              "support": 19.0
+            },
+            "fee_schedule": {
+              "precision": 0.5161290322580645,
+              "recall": 0.41025641025641024,
+              "f1-score": 0.45714285714285713,
+              "support": 39.0
+            },
+            "hybrid": {
+              "precision": 0.8048780487804879,
+              "recall": 0.75,
+              "f1-score": 0.7764705882352941,
+              "support": 44.0
+            },
+            "per_diem": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1-score": 0.0,
+              "support": 2.0
+            },
+            "percent_of_charge": {
+              "precision": 0.8,
+              "recall": 0.9411764705882353,
+              "f1-score": 0.8648648648648649,
+              "support": 17.0
+            },
+            "unclear": {
+              "precision": 0.8333333333333334,
+              "recall": 0.7692307692307693,
+              "f1-score": 0.8,
+              "support": 13.0
+            },
+            "accuracy": 0.6194029850746269,
+            "macro avg": {
+              "precision": 0.5436721203440322,
+              "recall": 0.548619380275727,
+              "f1-score": 0.5423389776330954,
+              "support": 134.0
+            },
+            "weighted avg": {
+              "precision": 0.6404712954021877,
+              "recall": 0.6194029850746269,
+              "f1-score": 0.6257577281282287,
+              "support": 134.0
+            }
+          }
+        }
+      }
+    },
+    "char_tfidf_linear_svm": {
+      "folds": {
+        "Banner Churchill Community Hospital": {
+          "train_n": 127,
+          "test_n": 7,
+          "train_labels": [
+            "case_rate",
+            "fee_schedule",
+            "hybrid",
+            "per_diem",
+            "percent_of_charge",
+            "unclear"
+          ],
+          "unseen_test_labels": [],
+          "metrics": {
+            "n": 7,
+            "accuracy": 0.14285714285714285,
+            "macro_f1_all_six_classes": 0.047619047619047616,
+            "per_class": {
+              "case_rate": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 0.0
+              },
+              "fee_schedule": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 0.0
+              },
+              "hybrid": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 0.0
+              },
+              "per_diem": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 0.0
+              },
+              "percent_of_charge": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 1.0
+              },
+              "unclear": {
+                "precision": 1.0,
+                "recall": 0.16666666666666666,
+                "f1-score": 0.2857142857142857,
+                "support": 6.0
+              },
+              "accuracy": 0.14285714285714285,
+              "macro avg": {
+                "precision": 0.16666666666666666,
+                "recall": 0.027777777777777776,
+                "f1-score": 0.047619047619047616,
+                "support": 7.0
+              },
+              "weighted avg": {
+                "precision": 0.8571428571428571,
+                "recall": 0.14285714285714285,
+                "f1-score": 0.24489795918367346,
+                "support": 7.0
+              }
+            }
+          }
+        },
+        "Berger Hospital": {
+          "train_n": 118,
+          "test_n": 16,
+          "train_labels": [
+            "case_rate",
+            "fee_schedule",
+            "hybrid",
+            "per_diem",
+            "percent_of_charge",
+            "unclear"
+          ],
+          "unseen_test_labels": [],
+          "metrics": {
+            "n": 16,
+            "accuracy": 0.75,
+            "macro_f1_all_six_classes": 0.521164021164021,
+            "per_class": {
+              "case_rate": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 0.0
+              },
+              "fee_schedule": {
+                "precision": 0.8,
+                "recall": 1.0,
+                "f1-score": 0.8888888888888888,
+                "support": 4.0
+              },
+              "hybrid": {
+                "precision": 1.0,
+                "recall": 0.5,
+                "f1-score": 0.6666666666666666,
+                "support": 8.0
+              },
+              "per_diem": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 0.0
+              },
+              "percent_of_charge": {
+                "precision": 0.4,
+                "recall": 1.0,
+                "f1-score": 0.5714285714285714,
+                "support": 2.0
+              },
+              "unclear": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1-score": 1.0,
+                "support": 2.0
+              },
+              "accuracy": 0.75,
+              "macro avg": {
+                "precision": 0.5333333333333333,
+                "recall": 0.5833333333333334,
+                "f1-score": 0.521164021164021,
+                "support": 16.0
+              },
+              "weighted avg": {
+                "precision": 0.875,
+                "recall": 0.75,
+                "f1-score": 0.751984126984127,
+                "support": 16.0
+              }
+            }
+          }
+        },
+        "Martha's Vineyard Hospital": {
+          "train_n": 123,
+          "test_n": 11,
+          "train_labels": [
+            "case_rate",
+            "fee_schedule",
+            "hybrid",
+            "percent_of_charge",
+            "unclear"
+          ],
+          "unseen_test_labels": [
+            "per_diem"
+          ],
+          "metrics": {
+            "n": 11,
+            "accuracy": 0.0,
+            "macro_f1_all_six_classes": 0.0,
+            "per_class": {
+              "case_rate": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 2.0
+              },
+              "fee_schedule": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 7.0
+              },
+              "hybrid": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 0.0
+              },
+              "per_diem": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 2.0
+              },
+              "percent_of_charge": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 0.0
+              },
+              "unclear": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 0.0
+              },
+              "accuracy": 0.0,
+              "macro avg": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 11.0
+              },
+              "weighted avg": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 11.0
+              }
+            }
+          }
+        },
+        "Orlando Health, Inc.": {
+          "train_n": 86,
+          "test_n": 48,
+          "train_labels": [
+            "case_rate",
+            "fee_schedule",
+            "hybrid",
+            "per_diem",
+            "percent_of_charge",
+            "unclear"
+          ],
+          "unseen_test_labels": [],
+          "metrics": {
+            "n": 48,
+            "accuracy": 0.7291666666666666,
+            "macro_f1_all_six_classes": 0.6324224021592443,
+            "per_class": {
+              "case_rate": {
+                "precision": 1.0,
+                "recall": 0.18181818181818182,
+                "f1-score": 0.3076923076923077,
+                "support": 11.0
+              },
+              "fee_schedule": {
+                "precision": 0.7777777777777778,
+                "recall": 0.7,
+                "f1-score": 0.7368421052631579,
+                "support": 10.0
+              },
+              "hybrid": {
+                "precision": 0.6206896551724138,
+                "recall": 0.9473684210526315,
+                "f1-score": 0.75,
+                "support": 19.0
+              },
+              "per_diem": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 0.0
+              },
+              "percent_of_charge": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1-score": 1.0,
+                "support": 6.0
+              },
+              "unclear": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1-score": 1.0,
+                "support": 2.0
+              },
+              "accuracy": 0.7291666666666666,
+              "macro avg": {
+                "precision": 0.7330779054916986,
+                "recall": 0.6381977671451355,
+                "f1-score": 0.6324224021592443,
+                "support": 48.0
+              },
+              "weighted avg": {
+                "precision": 0.8035600255427843,
+                "recall": 0.7291666666666666,
+                "f1-score": 0.6875632591093117,
+                "support": 48.0
+              }
+            }
+          }
+        },
+        "SOUTH MIAMI HOSPITAL": {
+          "train_n": 102,
+          "test_n": 32,
+          "train_labels": [
+            "case_rate",
+            "fee_schedule",
+            "hybrid",
+            "per_diem",
+            "percent_of_charge",
+            "unclear"
+          ],
+          "unseen_test_labels": [],
+          "metrics": {
+            "n": 32,
+            "accuracy": 0.09375,
+            "macro_f1_all_six_classes": 0.06837606837606837,
+            "per_class": {
+              "case_rate": {
+                "precision": 0.3333333333333333,
+                "recall": 0.3333333333333333,
+                "f1-score": 0.3333333333333333,
+                "support": 6.0
+              },
+              "fee_schedule": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 16.0
+              },
+              "hybrid": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 3.0
+              },
+              "per_diem": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 0.0
+              },
+              "percent_of_charge": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 5.0
+              },
+              "unclear": {
+                "precision": 0.041666666666666664,
+                "recall": 0.5,
+                "f1-score": 0.07692307692307693,
+                "support": 2.0
+              },
+              "accuracy": 0.09375,
+              "macro avg": {
+                "precision": 0.0625,
+                "recall": 0.13888888888888887,
+                "f1-score": 0.06837606837606837,
+                "support": 32.0
+              },
+              "weighted avg": {
+                "precision": 0.06510416666666667,
+                "recall": 0.09375,
+                "f1-score": 0.0673076923076923,
+                "support": 32.0
+              }
+            }
+          }
+        },
+        "Stanford Health Care Tri-Valley": {
+          "train_n": 114,
+          "test_n": 20,
+          "train_labels": [
+            "case_rate",
+            "fee_schedule",
+            "hybrid",
+            "per_diem",
+            "percent_of_charge",
+            "unclear"
+          ],
+          "unseen_test_labels": [],
+          "metrics": {
+            "n": 20,
+            "accuracy": 0.95,
+            "macro_f1_all_six_classes": 0.6275862068965518,
+            "per_class": {
+              "case_rate": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 0.0
+              },
+              "fee_schedule": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1-score": 1.0,
+                "support": 2.0
+              },
+              "hybrid": {
+                "precision": 0.9333333333333333,
+                "recall": 1.0,
+                "f1-score": 0.9655172413793104,
+                "support": 14.0
+              },
+              "per_diem": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 0.0
+              },
+              "percent_of_charge": {
+                "precision": 1.0,
+                "recall": 0.6666666666666666,
+                "f1-score": 0.8,
+                "support": 3.0
+              },
+              "unclear": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1-score": 1.0,
+                "support": 1.0
+              },
+              "accuracy": 0.95,
+              "macro avg": {
+                "precision": 0.6555555555555556,
+                "recall": 0.611111111111111,
+                "f1-score": 0.6275862068965518,
+                "support": 20.0
+              },
+              "weighted avg": {
+                "precision": 0.9533333333333334,
+                "recall": 0.95,
+                "f1-score": 0.9458620689655174,
+                "support": 20.0
+              }
+            }
+          }
+        }
+      },
+      "pooled": {
+        "n": 134,
+        "accuracy": 0.5223880597014925,
+        "macro_f1_all_six_classes": 0.4034065238998825,
+        "per_class": {
+          "case_rate": {
+            "precision": 0.4444444444444444,
+            "recall": 0.21052631578947367,
+            "f1-score": 0.2857142857142857,
+            "support": 19.0
+          },
+          "fee_schedule": {
+            "precision": 0.5652173913043478,
+            "recall": 0.3333333333333333,
+            "f1-score": 0.41935483870967744,
+            "support": 39.0
+          },
+          "hybrid": {
+            "precision": 0.7346938775510204,
+            "recall": 0.8181818181818182,
+            "f1-score": 0.7741935483870968,
+            "support": 44.0
+          },
+          "per_diem": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 2.0
+          },
+          "percent_of_charge": {
+            "precision": 0.7692307692307693,
+            "recall": 0.5882352941176471,
+            "f1-score": 0.6666666666666666,
+            "support": 17.0
+          },
+          "unclear": {
+            "precision": 0.18421052631578946,
+            "recall": 0.5384615384615384,
+            "f1-score": 0.27450980392156865,
+            "support": 13.0
+          },
+          "accuracy": 0.5223880597014925,
+          "macro avg": {
+            "precision": 0.44963283480772853,
+            "recall": 0.4147897166473018,
+            "f1-score": 0.4034065238998825,
+            "support": 134.0
+          },
+          "weighted avg": {
+            "precision": 0.5842247256461734,
+            "recall": 0.5223880597014925,
+            "f1-score": 0.5279842317283195,
+            "support": 134.0
+          }
+        }
+      },
+      "pooled_seen_label_subset": {
+        "n": 132,
+        "accuracy": 0.5303030303030303,
+        "macro_f1_all_six_classes": 0.4065727168743971,
+        "per_class": {
+          "case_rate": {
+            "precision": 0.5,
+            "recall": 0.21052631578947367,
+            "f1-score": 0.2962962962962963,
+            "support": 19.0
+          },
+          "fee_schedule": {
+            "precision": 0.5652173913043478,
+            "recall": 0.3333333333333333,
+            "f1-score": 0.41935483870967744,
+            "support": 39.0
+          },
+          "hybrid": {
+            "precision": 0.75,
+            "recall": 0.8181818181818182,
+            "f1-score": 0.782608695652174,
+            "support": 44.0
+          },
+          "per_diem": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 0.0
+          },
+          "percent_of_charge": {
+            "precision": 0.7692307692307693,
+            "recall": 0.5882352941176471,
+            "f1-score": 0.6666666666666666,
+            "support": 17.0
+          },
+          "unclear": {
+            "precision": 0.18421052631578946,
+            "recall": 0.5384615384615384,
+            "f1-score": 0.27450980392156865,
+            "support": 13.0
+          },
+          "accuracy": 0.5303030303030303,
+          "macro avg": {
+            "precision": 0.461443114475151,
+            "recall": 0.4147897166473018,
+            "f1-score": 0.4065727168743971,
+            "support": 132.0
+          },
+          "weighted avg": {
+            "precision": 0.6061752892416508,
+            "recall": 0.5303030303030303,
+            "f1-score": 0.5403122100933063,
+            "support": 132.0
+          }
+        }
+      },
+      "development_stratified_random_cv": {
+        "warning": "Hospitals are mixed across folds; use only to quantify template leakage, not external validity.",
+        "pooled": {
+          "n": 134,
+          "accuracy": 0.7388059701492538,
+          "macro_f1_all_six_classes": 0.6202751491544595,
+          "per_class": {
+            "case_rate": {
+              "precision": 0.5294117647058824,
+              "recall": 0.47368421052631576,
+              "f1-score": 0.5,
+              "support": 19.0
+            },
+            "fee_schedule": {
+              "precision": 0.6666666666666666,
+              "recall": 0.8205128205128205,
+              "f1-score": 0.735632183908046,
+              "support": 39.0
+            },
+            "hybrid": {
+              "precision": 0.8611111111111112,
+              "recall": 0.7045454545454546,
+              "f1-score": 0.775,
+              "support": 44.0
+            },
+            "per_diem": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1-score": 0.0,
+              "support": 2.0
+            },
+            "percent_of_charge": {
+              "precision": 0.8,
+              "recall": 0.9411764705882353,
+              "f1-score": 0.8648648648648649,
+              "support": 17.0
+            },
+            "unclear": {
+              "precision": 0.8461538461538461,
+              "recall": 0.8461538461538461,
+              "f1-score": 0.8461538461538461,
+              "support": 13.0
+            },
+            "accuracy": 0.7388059701492538,
+            "macro avg": {
+              "precision": 0.617223898106251,
+              "recall": 0.631012133721112,
+              "f1-score": 0.6202751491544595,
+              "support": 134.0
+            },
+            "weighted avg": {
+              "precision": 0.7354306896888108,
+              "recall": 0.7388059701492538,
+              "f1-score": 0.731286252799377,
+              "support": 134.0
+            }
+          }
+        }
+      }
+    },
+    "hpp_nlp_hybrid_logistic": {
+      "folds": {
+        "Banner Churchill Community Hospital": {
+          "train_n": 127,
+          "test_n": 7,
+          "train_labels": [
+            "case_rate",
+            "fee_schedule",
+            "hybrid",
+            "per_diem",
+            "percent_of_charge",
+            "unclear"
+          ],
+          "unseen_test_labels": [],
+          "metrics": {
+            "n": 7,
+            "accuracy": 0.2857142857142857,
+            "macro_f1_all_six_classes": 0.21428571428571427,
+            "per_class": {
+              "case_rate": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 0.0
+              },
+              "fee_schedule": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 0.0
+              },
+              "hybrid": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 0.0
+              },
+              "per_diem": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 0.0
+              },
+              "percent_of_charge": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1-score": 1.0,
+                "support": 1.0
+              },
+              "unclear": {
+                "precision": 1.0,
+                "recall": 0.16666666666666666,
+                "f1-score": 0.2857142857142857,
+                "support": 6.0
+              },
+              "accuracy": 0.2857142857142857,
+              "macro avg": {
+                "precision": 0.3333333333333333,
+                "recall": 0.19444444444444445,
+                "f1-score": 0.21428571428571427,
+                "support": 7.0
+              },
+              "weighted avg": {
+                "precision": 1.0,
+                "recall": 0.2857142857142857,
+                "f1-score": 0.38775510204081637,
+                "support": 7.0
+              }
+            }
+          }
+        },
+        "Berger Hospital": {
+          "train_n": 118,
+          "test_n": 16,
+          "train_labels": [
+            "case_rate",
+            "fee_schedule",
+            "hybrid",
+            "per_diem",
+            "percent_of_charge",
+            "unclear"
+          ],
+          "unseen_test_labels": [],
+          "metrics": {
+            "n": 16,
+            "accuracy": 0.8125,
+            "macro_f1_all_six_classes": 0.5541310541310541,
+            "per_class": {
+              "case_rate": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 0.0
+              },
+              "fee_schedule": {
+                "precision": 0.8,
+                "recall": 1.0,
+                "f1-score": 0.8888888888888888,
+                "support": 4.0
+              },
+              "hybrid": {
+                "precision": 1.0,
+                "recall": 0.625,
+                "f1-score": 0.7692307692307693,
+                "support": 8.0
+              },
+              "per_diem": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 0.0
+              },
+              "percent_of_charge": {
+                "precision": 0.5,
+                "recall": 1.0,
+                "f1-score": 0.6666666666666666,
+                "support": 2.0
+              },
+              "unclear": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1-score": 1.0,
+                "support": 2.0
+              },
+              "accuracy": 0.8125,
+              "macro avg": {
+                "precision": 0.5499999999999999,
+                "recall": 0.6041666666666666,
+                "f1-score": 0.5541310541310541,
+                "support": 16.0
+              },
+              "weighted avg": {
+                "precision": 0.8875,
+                "recall": 0.8125,
+                "f1-score": 0.8151709401709403,
+                "support": 16.0
+              }
+            }
+          }
+        },
+        "Martha's Vineyard Hospital": {
+          "train_n": 123,
+          "test_n": 11,
+          "train_labels": [
+            "case_rate",
+            "fee_schedule",
+            "hybrid",
+            "percent_of_charge",
+            "unclear"
+          ],
+          "unseen_test_labels": [
+            "per_diem"
+          ],
+          "metrics": {
+            "n": 11,
+            "accuracy": 0.6363636363636364,
+            "macro_f1_all_six_classes": 0.14583333333333334,
+            "per_class": {
+              "case_rate": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 2.0
+              },
+              "fee_schedule": {
+                "precision": 0.7777777777777778,
+                "recall": 1.0,
+                "f1-score": 0.875,
+                "support": 7.0
+              },
+              "hybrid": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 0.0
+              },
+              "per_diem": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 2.0
+              },
+              "percent_of_charge": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 0.0
+              },
+              "unclear": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 0.0
+              },
+              "accuracy": 0.6363636363636364,
+              "macro avg": {
+                "precision": 0.12962962962962962,
+                "recall": 0.16666666666666666,
+                "f1-score": 0.14583333333333334,
+                "support": 11.0
+              },
+              "weighted avg": {
+                "precision": 0.494949494949495,
+                "recall": 0.6363636363636364,
+                "f1-score": 0.5568181818181818,
+                "support": 11.0
+              }
+            }
+          }
+        },
+        "Orlando Health, Inc.": {
+          "train_n": 86,
+          "test_n": 48,
+          "train_labels": [
+            "case_rate",
+            "fee_schedule",
+            "hybrid",
+            "per_diem",
+            "percent_of_charge",
+            "unclear"
+          ],
+          "unseen_test_labels": [],
+          "metrics": {
+            "n": 48,
+            "accuracy": 0.7708333333333334,
+            "macro_f1_all_six_classes": 0.6165171382562686,
+            "per_class": {
+              "case_rate": {
+                "precision": 1.0,
+                "recall": 0.2727272727272727,
+                "f1-score": 0.42857142857142855,
+                "support": 11.0
+              },
+              "fee_schedule": {
+                "precision": 0.875,
+                "recall": 0.7,
+                "f1-score": 0.7777777777777778,
+                "support": 10.0
+              },
+              "hybrid": {
+                "precision": 0.7037037037037037,
+                "recall": 1.0,
+                "f1-score": 0.8260869565217391,
+                "support": 19.0
+              },
+              "per_diem": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 0.0
+              },
+              "percent_of_charge": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1-score": 1.0,
+                "support": 6.0
+              },
+              "unclear": {
+                "precision": 0.5,
+                "recall": 1.0,
+                "f1-score": 0.6666666666666666,
+                "support": 2.0
+              },
+              "accuracy": 0.7708333333333334,
+              "macro avg": {
+                "precision": 0.679783950617284,
+                "recall": 0.6621212121212121,
+                "f1-score": 0.6165171382562686,
+                "support": 48.0
+              },
+              "weighted avg": {
+                "precision": 0.835841049382716,
+                "recall": 0.7708333333333334,
+                "f1-score": 0.7400218541522889,
+                "support": 48.0
+              }
+            }
+          }
+        },
+        "SOUTH MIAMI HOSPITAL": {
+          "train_n": 102,
+          "test_n": 32,
+          "train_labels": [
+            "case_rate",
+            "fee_schedule",
+            "hybrid",
+            "per_diem",
+            "percent_of_charge",
+            "unclear"
+          ],
+          "unseen_test_labels": [],
+          "metrics": {
+            "n": 32,
+            "accuracy": 0.40625,
+            "macro_f1_all_six_classes": 0.36231884057971014,
+            "per_class": {
+              "case_rate": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1-score": 1.0,
+                "support": 6.0
+              },
+              "fee_schedule": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 16.0
+              },
+              "hybrid": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 3.0
+              },
+              "per_diem": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 0.0
+              },
+              "percent_of_charge": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1-score": 1.0,
+                "support": 5.0
+              },
+              "unclear": {
+                "precision": 0.09523809523809523,
+                "recall": 1.0,
+                "f1-score": 0.17391304347826086,
+                "support": 2.0
+              },
+              "accuracy": 0.40625,
+              "macro avg": {
+                "precision": 0.34920634920634924,
+                "recall": 0.5,
+                "f1-score": 0.36231884057971014,
+                "support": 32.0
+              },
+              "weighted avg": {
+                "precision": 0.34970238095238093,
+                "recall": 0.40625,
+                "f1-score": 0.3546195652173913,
+                "support": 32.0
+              }
+            }
+          }
+        },
+        "Stanford Health Care Tri-Valley": {
+          "train_n": 114,
+          "test_n": 20,
+          "train_labels": [
+            "case_rate",
+            "fee_schedule",
+            "hybrid",
+            "per_diem",
+            "percent_of_charge",
+            "unclear"
+          ],
+          "unseen_test_labels": [],
+          "metrics": {
+            "n": 20,
+            "accuracy": 0.9,
+            "macro_f1_all_six_classes": 0.63003663003663,
+            "per_class": {
+              "case_rate": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 0.0
+              },
+              "fee_schedule": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1-score": 1.0,
+                "support": 2.0
+              },
+              "hybrid": {
+                "precision": 1.0,
+                "recall": 0.8571428571428571,
+                "f1-score": 0.9230769230769231,
+                "support": 14.0
+              },
+              "per_diem": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 0.0
+              },
+              "percent_of_charge": {
+                "precision": 0.75,
+                "recall": 1.0,
+                "f1-score": 0.8571428571428571,
+                "support": 3.0
+              },
+              "unclear": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1-score": 1.0,
+                "support": 1.0
+              },
+              "accuracy": 0.9,
+              "macro avg": {
+                "precision": 0.625,
+                "recall": 0.6428571428571429,
+                "f1-score": 0.63003663003663,
+                "support": 20.0
+              },
+              "weighted avg": {
+                "precision": 0.9625,
+                "recall": 0.9,
+                "f1-score": 0.9247252747252748,
+                "support": 20.0
+              }
+            }
+          }
+        }
+      },
+      "pooled": {
+        "n": 134,
+        "accuracy": 0.6716417910447762,
+        "macro_f1_all_six_classes": 0.5514660415268935,
+        "per_class": {
+          "case_rate": {
+            "precision": 0.9,
+            "recall": 0.47368421052631576,
+            "f1-score": 0.6206896551724138,
+            "support": 19.0
+          },
+          "fee_schedule": {
+            "precision": 0.6896551724137931,
+            "recall": 0.5128205128205128,
+            "f1-score": 0.5882352941176471,
+            "support": 39.0
+          },
+          "hybrid": {
+            "precision": 0.782608695652174,
+            "recall": 0.8181818181818182,
+            "f1-score": 0.8,
+            "support": 44.0
+          },
+          "per_diem": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 2.0
+          },
+          "percent_of_charge": {
+            "precision": 0.85,
+            "recall": 1.0,
+            "f1-score": 0.918918918918919,
+            "support": 17.0
+          },
+          "unclear": {
+            "precision": 0.27586206896551724,
+            "recall": 0.6153846153846154,
+            "f1-score": 0.38095238095238093,
+            "support": 13.0
+          },
+          "accuracy": 0.6716417910447762,
+          "macro avg": {
+            "precision": 0.5830209895052474,
+            "recall": 0.5700118594855437,
+            "f1-score": 0.5514660415268935,
+            "support": 134.0
+          },
+          "weighted avg": {
+            "precision": 0.7199070240998905,
+            "recall": 0.6716417910447762,
+            "f1-score": 0.675434943976617,
+            "support": 134.0
+          }
+        }
+      },
+      "pooled_seen_label_subset": {
+        "n": 132,
+        "accuracy": 0.6818181818181818,
+        "macro_f1_all_six_classes": 0.5544963445571965,
+        "per_class": {
+          "case_rate": {
+            "precision": 0.9,
+            "recall": 0.47368421052631576,
+            "f1-score": 0.6206896551724138,
+            "support": 19.0
+          },
+          "fee_schedule": {
+            "precision": 0.6896551724137931,
+            "recall": 0.5128205128205128,
+            "f1-score": 0.5882352941176471,
+            "support": 39.0
+          },
+          "hybrid": {
+            "precision": 0.8181818181818182,
+            "recall": 0.8181818181818182,
+            "f1-score": 0.8181818181818182,
+            "support": 44.0
+          },
+          "per_diem": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 0.0
+          },
+          "percent_of_charge": {
+            "precision": 0.85,
+            "recall": 1.0,
+            "f1-score": 0.918918918918919,
+            "support": 17.0
+          },
+          "unclear": {
+            "precision": 0.27586206896551724,
+            "recall": 0.6153846153846154,
+            "f1-score": 0.38095238095238093,
+            "support": 13.0
+          },
+          "accuracy": 0.6818181818181818,
+          "macro avg": {
+            "precision": 0.5889498432601882,
+            "recall": 0.5700118594855437,
+            "f1-score": 0.5544963445571965,
+            "support": 132.0
+          },
+          "weighted avg": {
+            "precision": 0.7426724137931036,
+            "recall": 0.6818181818181818,
+            "f1-score": 0.6917294128247475,
+            "support": 132.0
+          }
+        }
+      },
+      "selective_prediction": [
+        {
+          "threshold": 0.4,
+          "coverage": 0.8134328358208955,
+          "covered_n": 109,
+          "accuracy_when_covered": 0.7981651376146789,
+          "macro_f1_when_covered": 0.6444049569049569
+        },
+        {
+          "threshold": 0.5,
+          "coverage": 0.6865671641791045,
+          "covered_n": 92,
+          "accuracy_when_covered": 0.8478260869565217,
+          "macro_f1_when_covered": 0.6748246585455888
+        },
+        {
+          "threshold": 0.6,
+          "coverage": 0.4925373134328358,
+          "covered_n": 66,
+          "accuracy_when_covered": 0.8636363636363636,
+          "macro_f1_when_covered": 0.7015768930523029
+        },
+        {
+          "threshold": 0.7,
+          "coverage": 0.3805970149253731,
+          "covered_n": 51,
+          "accuracy_when_covered": 0.8627450980392157,
+          "macro_f1_when_covered": 0.6899707996406109
+        },
+        {
+          "threshold": 0.8,
+          "coverage": 0.21641791044776118,
+          "covered_n": 29,
+          "accuracy_when_covered": 0.9655172413793104,
+          "macro_f1_when_covered": 0.4959349593495935
+        },
+        {
+          "threshold": 0.9,
+          "coverage": 0.04477611940298507,
+          "covered_n": 6,
+          "accuracy_when_covered": 1.0,
+          "macro_f1_when_covered": 0.16666666666666666
+        }
+      ],
+      "development_stratified_random_cv": {
+        "warning": "Hospitals are mixed across folds; use only to quantify template leakage, not external validity.",
+        "pooled": {
+          "n": 134,
+          "accuracy": 0.8059701492537313,
+          "macro_f1_all_six_classes": 0.7866088833558549,
+          "per_class": {
+            "case_rate": {
+              "precision": 0.8125,
+              "recall": 0.6842105263157895,
+              "f1-score": 0.7428571428571429,
+              "support": 19.0
+            },
+            "fee_schedule": {
+              "precision": 0.775,
+              "recall": 0.7948717948717948,
+              "f1-score": 0.7848101265822784,
+              "support": 39.0
+            },
+            "hybrid": {
+              "precision": 0.8918918918918919,
+              "recall": 0.75,
+              "f1-score": 0.8148148148148148,
+              "support": 44.0
+            },
+            "per_diem": {
+              "precision": 1.0,
+              "recall": 0.5,
+              "f1-score": 0.6666666666666666,
+              "support": 2.0
+            },
+            "percent_of_charge": {
+              "precision": 0.7727272727272727,
+              "recall": 1.0,
+              "f1-score": 0.8717948717948718,
+              "support": 17.0
+            },
+            "unclear": {
+              "precision": 0.7222222222222222,
+              "recall": 1.0,
+              "f1-score": 0.8387096774193549,
+              "support": 13.0
+            },
+            "accuracy": 0.8059701492537313,
+            "macro avg": {
+              "precision": 0.8290568978068977,
+              "recall": 0.7881803868645973,
+              "f1-score": 0.7866088833558549,
+              "support": 134.0
+            },
+            "weighted avg": {
+              "precision": 0.8166492221529535,
+              "recall": 0.8059701492537313,
+              "f1-score": 0.8032149586801806,
+              "support": 134.0
+            }
+          }
+        }
+      }
+    },
+    "hpp_nlp_rule_model_cascade": {
+      "policy": "Use fixed literal rule when it returns a substantive class; otherwise use HPP-NLP hybrid logistic prediction.",
+      "folds": {
+        "Banner Churchill Community Hospital": {
+          "test_n": 7,
+          "metrics": {
+            "n": 7,
+            "accuracy": 0.2857142857142857,
+            "macro_f1_all_six_classes": 0.21428571428571427,
+            "per_class": {
+              "case_rate": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 0.0
+              },
+              "fee_schedule": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 0.0
+              },
+              "hybrid": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 0.0
+              },
+              "per_diem": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 0.0
+              },
+              "percent_of_charge": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1-score": 1.0,
+                "support": 1.0
+              },
+              "unclear": {
+                "precision": 1.0,
+                "recall": 0.16666666666666666,
+                "f1-score": 0.2857142857142857,
+                "support": 6.0
+              },
+              "accuracy": 0.2857142857142857,
+              "macro avg": {
+                "precision": 0.3333333333333333,
+                "recall": 0.19444444444444445,
+                "f1-score": 0.21428571428571427,
+                "support": 7.0
+              },
+              "weighted avg": {
+                "precision": 1.0,
+                "recall": 0.2857142857142857,
+                "f1-score": 0.38775510204081637,
+                "support": 7.0
+              }
+            }
+          }
+        },
+        "Berger Hospital": {
+          "test_n": 16,
+          "metrics": {
+            "n": 16,
+            "accuracy": 0.9375,
+            "macro_f1_all_six_classes": 0.637037037037037,
+            "per_class": {
+              "case_rate": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 0.0
+              },
+              "fee_schedule": {
+                "precision": 0.8,
+                "recall": 1.0,
+                "f1-score": 0.8888888888888888,
+                "support": 4.0
+              },
+              "hybrid": {
+                "precision": 1.0,
+                "recall": 0.875,
+                "f1-score": 0.9333333333333333,
+                "support": 8.0
+              },
+              "per_diem": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 0.0
+              },
+              "percent_of_charge": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1-score": 1.0,
+                "support": 2.0
+              },
+              "unclear": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1-score": 1.0,
+                "support": 2.0
+              },
+              "accuracy": 0.9375,
+              "macro avg": {
+                "precision": 0.6333333333333333,
+                "recall": 0.6458333333333334,
+                "f1-score": 0.637037037037037,
+                "support": 16.0
+              },
+              "weighted avg": {
+                "precision": 0.95,
+                "recall": 0.9375,
+                "f1-score": 0.9388888888888889,
+                "support": 16.0
+              }
+            }
+          }
+        },
+        "Martha's Vineyard Hospital": {
+          "test_n": 11,
+          "metrics": {
+            "n": 11,
+            "accuracy": 0.8181818181818182,
+            "macro_f1_all_six_classes": 0.3125,
+            "per_class": {
+              "case_rate": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 2.0
+              },
+              "fee_schedule": {
+                "precision": 0.7777777777777778,
+                "recall": 1.0,
+                "f1-score": 0.875,
+                "support": 7.0
+              },
+              "hybrid": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 0.0
+              },
+              "per_diem": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1-score": 1.0,
+                "support": 2.0
+              },
+              "percent_of_charge": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 0.0
+              },
+              "unclear": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 0.0
+              },
+              "accuracy": 0.8181818181818182,
+              "macro avg": {
+                "precision": 0.2962962962962963,
+                "recall": 0.3333333333333333,
+                "f1-score": 0.3125,
+                "support": 11.0
+              },
+              "weighted avg": {
+                "precision": 0.6767676767676768,
+                "recall": 0.8181818181818182,
+                "f1-score": 0.7386363636363636,
+                "support": 11.0
+              }
+            }
+          }
+        },
+        "Orlando Health, Inc.": {
+          "test_n": 48,
+          "metrics": {
+            "n": 48,
+            "accuracy": 0.7708333333333334,
+            "macro_f1_all_six_classes": 0.6569107062528116,
+            "per_class": {
+              "case_rate": {
+                "precision": 1.0,
+                "recall": 0.18181818181818182,
+                "f1-score": 0.3076923076923077,
+                "support": 11.0
+              },
+              "fee_schedule": {
+                "precision": 0.8888888888888888,
+                "recall": 0.8,
+                "f1-score": 0.8421052631578947,
+                "support": 10.0
+              },
+              "hybrid": {
+                "precision": 0.6551724137931034,
+                "recall": 1.0,
+                "f1-score": 0.7916666666666666,
+                "support": 19.0
+              },
+              "per_diem": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 0.0
+              },
+              "percent_of_charge": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1-score": 1.0,
+                "support": 6.0
+              },
+              "unclear": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1-score": 1.0,
+                "support": 2.0
+              },
+              "accuracy": 0.7708333333333334,
+              "macro avg": {
+                "precision": 0.7573435504469987,
+                "recall": 0.6636363636363637,
+                "f1-score": 0.6569107062528116,
+                "support": 48.0
+              },
+              "weighted avg": {
+                "precision": 0.8403575989782887,
+                "recall": 0.7708333333333334,
+                "f1-score": 0.7259861392262708,
+                "support": 48.0
+              }
+            }
+          }
+        },
+        "SOUTH MIAMI HOSPITAL": {
+          "test_n": 32,
+          "metrics": {
+            "n": 32,
+            "accuracy": 0.40625,
+            "macro_f1_all_six_classes": 0.36231884057971014,
+            "per_class": {
+              "case_rate": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1-score": 1.0,
+                "support": 6.0
+              },
+              "fee_schedule": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 16.0
+              },
+              "hybrid": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 3.0
+              },
+              "per_diem": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 0.0
+              },
+              "percent_of_charge": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1-score": 1.0,
+                "support": 5.0
+              },
+              "unclear": {
+                "precision": 0.09523809523809523,
+                "recall": 1.0,
+                "f1-score": 0.17391304347826086,
+                "support": 2.0
+              },
+              "accuracy": 0.40625,
+              "macro avg": {
+                "precision": 0.34920634920634924,
+                "recall": 0.5,
+                "f1-score": 0.36231884057971014,
+                "support": 32.0
+              },
+              "weighted avg": {
+                "precision": 0.34970238095238093,
+                "recall": 0.40625,
+                "f1-score": 0.3546195652173913,
+                "support": 32.0
+              }
+            }
+          }
+        },
+        "Stanford Health Care Tri-Valley": {
+          "test_n": 20,
+          "metrics": {
+            "n": 20,
+            "accuracy": 0.95,
+            "macro_f1_all_six_classes": 0.63668430335097,
+            "per_class": {
+              "case_rate": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 0.0
+              },
+              "fee_schedule": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1-score": 1.0,
+                "support": 2.0
+              },
+              "hybrid": {
+                "precision": 1.0,
+                "recall": 0.9285714285714286,
+                "f1-score": 0.9629629629629629,
+                "support": 14.0
+              },
+              "per_diem": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 0.0
+              },
+              "percent_of_charge": {
+                "precision": 0.75,
+                "recall": 1.0,
+                "f1-score": 0.8571428571428571,
+                "support": 3.0
+              },
+              "unclear": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1-score": 1.0,
+                "support": 1.0
+              },
+              "accuracy": 0.95,
+              "macro avg": {
+                "precision": 0.625,
+                "recall": 0.6547619047619048,
+                "f1-score": 0.63668430335097,
+                "support": 20.0
+              },
+              "weighted avg": {
+                "precision": 0.9625,
+                "recall": 0.95,
+                "f1-score": 0.9526455026455025,
+                "support": 20.0
+              }
+            }
+          }
+        }
+      },
+      "pooled": {
+        "n": 134,
+        "accuracy": 0.7089552238805971,
+        "macro_f1_all_six_classes": 0.7352377489357388,
+        "per_class": {
+          "case_rate": {
+            "precision": 1.0,
+            "recall": 0.42105263157894735,
+            "f1-score": 0.5925925925925926,
+            "support": 19.0
+          },
+          "fee_schedule": {
+            "precision": 0.7,
+            "recall": 0.5384615384615384,
+            "f1-score": 0.6086956521739131,
+            "support": 39.0
+          },
+          "hybrid": {
+            "precision": 0.7959183673469388,
+            "recall": 0.8863636363636364,
+            "f1-score": 0.8387096774193549,
+            "support": 44.0
+          },
+          "per_diem": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 2.0
+          },
+          "percent_of_charge": {
+            "precision": 0.9444444444444444,
+            "recall": 1.0,
+            "f1-score": 0.9714285714285714,
+            "support": 17.0
+          },
+          "unclear": {
+            "precision": 0.2962962962962963,
+            "recall": 0.6153846153846154,
+            "f1-score": 0.4,
+            "support": 13.0
+          },
+          "accuracy": 0.7089552238805971,
+          "macro avg": {
+            "precision": 0.7894431846812798,
+            "recall": 0.7435437369647895,
+            "f1-score": 0.7352377489357388,
+            "support": 134.0
+          },
+          "weighted avg": {
+            "precision": 0.7703568326169605,
+            "recall": 0.7089552238805971,
+            "f1-score": 0.7135515016028298,
+            "support": 134.0
+          }
+        }
+      },
+      "pooled_seen_label_subset": {
+        "n": 132,
+        "accuracy": 0.7045454545454546,
+        "macro_f1_all_six_classes": 0.568571082269072,
+        "per_class": {
+          "case_rate": {
+            "precision": 1.0,
+            "recall": 0.42105263157894735,
+            "f1-score": 0.5925925925925926,
+            "support": 19.0
+          },
+          "fee_schedule": {
+            "precision": 0.7,
+            "recall": 0.5384615384615384,
+            "f1-score": 0.6086956521739131,
+            "support": 39.0
+          },
+          "hybrid": {
+            "precision": 0.7959183673469388,
+            "recall": 0.8863636363636364,
+            "f1-score": 0.8387096774193549,
+            "support": 44.0
+          },
+          "per_diem": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 0.0
+          },
+          "percent_of_charge": {
+            "precision": 0.9444444444444444,
+            "recall": 1.0,
+            "f1-score": 0.9714285714285714,
+            "support": 17.0
+          },
+          "unclear": {
+            "precision": 0.2962962962962963,
+            "recall": 0.6153846153846154,
+            "f1-score": 0.4,
+            "support": 13.0
+          },
+          "accuracy": 0.7045454545454546,
+          "macro avg": {
+            "precision": 0.6227765180146132,
+            "recall": 0.5768770702981229,
+            "f1-score": 0.568571082269072,
+            "support": 132.0
+          },
+          "weighted avg": {
+            "precision": 0.7668773906869145,
+            "recall": 0.7045454545454546,
+            "f1-score": 0.7092113728392363,
+            "support": 132.0
+          }
+        }
+      },
+      "development_stratified_random_cv": {
+        "warning": "Hospitals are mixed across folds; development-only.",
+        "pooled": {
+          "n": 134,
+          "accuracy": 0.8283582089552238,
+          "macro_f1_all_six_classes": 0.843658889895449,
+          "per_class": {
+            "case_rate": {
+              "precision": 1.0,
+              "recall": 0.42105263157894735,
+              "f1-score": 0.5925925925925926,
+              "support": 19.0
+            },
+            "fee_schedule": {
+              "precision": 0.8205128205128205,
+              "recall": 0.8205128205128205,
+              "f1-score": 0.8205128205128205,
+              "support": 39.0
+            },
+            "hybrid": {
+              "precision": 0.7959183673469388,
+              "recall": 0.8863636363636364,
+              "f1-score": 0.8387096774193549,
+              "support": 44.0
+            },
+            "per_diem": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1-score": 1.0,
+              "support": 2.0
+            },
+            "percent_of_charge": {
+              "precision": 0.9444444444444444,
+              "recall": 1.0,
+              "f1-score": 0.9714285714285714,
+              "support": 17.0
+            },
+            "unclear": {
+              "precision": 0.7222222222222222,
+              "recall": 1.0,
+              "f1-score": 0.8387096774193549,
+              "support": 13.0
+            },
+            "accuracy": 0.8283582089552238,
+            "macro avg": {
+              "precision": 0.8805163090877377,
+              "recall": 0.8546548480759008,
+              "f1-score": 0.843658889895449,
+              "support": 134.0
+            },
+            "weighted avg": {
+              "precision": 0.846752631400819,
+              "recall": 0.8283582089552238,
+              "f1-score": 0.8177611685555836,
+              "support": 134.0
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,184 @@
+{
+  "design": {
+    "labels": "two independent AI agents, guide v1.1, root AI adjudication",
+    "warning": "Development labels are not human-expert gold standard.",
+    "split": "leave one hospital/system out; unique expressions only",
+    "model": "character 3-5 gram multinomial naive Bayes"
+  },
+  "folds": {
+    "Banner Churchill Community Hospital": {
+      "train_n": 164,
+      "test_n": 14,
+      "train_labels": [
+        "case_rate",
+        "fee_schedule",
+        "hybrid",
+        "per_diem",
+        "percent_of_charge",
+        "unclear"
+      ],
+      "test_labels": [
+        "percent_of_charge",
+        "unclear"
+      ],
+      "unseen_test_labels": [],
+      "metrics": {
+        "n": 14,
+        "accuracy": 0.5,
+        "macro_f1": 0.33333333333333337,
+        "per_class": {
+          "percent_of_charge": {
+            "support": 1,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "unclear": {
+            "support": 13,
+            "precision": 0.875,
+            "recall": 0.5384615384615384,
+            "f1": 0.6666666666666667
+          }
+        }
+      }
+    },
+    "Berger Hospital": {
+      "train_n": 150,
+      "test_n": 28,
+      "train_labels": [
+        "case_rate",
+        "fee_schedule",
+        "per_diem",
+        "percent_of_charge",
+        "unclear"
+      ],
+      "test_labels": [
+        "fee_schedule",
+        "hybrid",
+        "percent_of_charge",
+        "unclear"
+      ],
+      "unseen_test_labels": [
+        "hybrid"
+      ],
+      "metrics": {
+        "n": 28,
+        "accuracy": 0.35714285714285715,
+        "macro_f1": 0.13157894736842105,
+        "per_class": {
+          "fee_schedule": {
+            "support": 4,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "hybrid": {
+            "support": 11,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "percent_of_charge": {
+            "support": 10,
+            "precision": 0.35714285714285715,
+            "recall": 1.0,
+            "f1": 0.5263157894736842
+          },
+          "unclear": {
+            "support": 3,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        }
+      }
+    },
+    "Martha's Vineyard Hospital": {
+      "train_n": 42,
+      "test_n": 136,
+      "train_labels": [
+        "fee_schedule",
+        "hybrid",
+        "percent_of_charge",
+        "unclear"
+      ],
+      "test_labels": [
+        "case_rate",
+        "fee_schedule",
+        "per_diem"
+      ],
+      "unseen_test_labels": [
+        "case_rate",
+        "per_diem"
+      ],
+      "metrics": {
+        "n": 136,
+        "accuracy": 0.4411764705882353,
+        "macro_f1": 0.20408163265306123,
+        "per_class": {
+          "case_rate": {
+            "support": 68,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "fee_schedule": {
+            "support": 60,
+            "precision": 0.4411764705882353,
+            "recall": 1.0,
+            "f1": 0.6122448979591837
+          },
+          "per_diem": {
+            "support": 8,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        }
+      }
+    }
+  },
+  "pooled": {
+    "n": 178,
+    "accuracy": 0.43258426966292135,
+    "macro_f1": 0.28269230769230774,
+    "per_class": {
+      "case_rate": {
+        "support": 68,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "fee_schedule": {
+        "support": 64,
+        "precision": 0.4411764705882353,
+        "recall": 0.9375,
+        "f1": 0.6
+      },
+      "hybrid": {
+        "support": 11,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "per_diem": {
+        "support": 8,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "percent_of_charge": {
+        "support": 11,
+        "precision": 0.35714285714285715,
+        "recall": 0.9090909090909091,
+        "f1": 0.5128205128205129
+      },
+      "unclear": {
+        "support": 16,
+        "precision": 0.875,
+        "recall": 0.4375,
+        "f1": 0.5833333333333334
+      }
+    }
+  }
+}

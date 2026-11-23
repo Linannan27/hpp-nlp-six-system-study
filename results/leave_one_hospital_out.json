@@ -1,0 +1,486 @@
+{
+  "design": {
+    "unit": "unique hospital-expression-methodology tuple",
+    "reference": "structured CMS methodology (weak label)",
+    "split": "leave one entire hospital/system out",
+    "models": [
+      "literal fixed rules",
+      "fixed contextual rules",
+      "character 3-5 gram multinomial naive Bayes"
+    ],
+    "warning": "Three hospitals have severe label-support imbalance; unseen held-out labels are reported explicitly."
+  },
+  "folds": {
+    "Banner Churchill Community Hospital": {
+      "train_n": 164,
+      "test_n": 2,
+      "train_labels": [
+        "case_rate",
+        "fee_schedule",
+        "other",
+        "per_diem"
+      ],
+      "test_labels": [
+        "percent_of_charge"
+      ],
+      "unseen_test_labels": [
+        "percent_of_charge"
+      ],
+      "literal_rule": {
+        "n": 2,
+        "coverage": 0.5,
+        "accuracy": 0.5,
+        "macro_f1": 0.6666666666666666,
+        "per_class": {
+          "percent_of_charge": {
+            "support": 2,
+            "precision": 1.0,
+            "recall": 0.5,
+            "f1": 0.6666666666666666
+          }
+        }
+      },
+      "contextual_rule_posthoc_not_validated": {
+        "n": 2,
+        "coverage": 0.5,
+        "accuracy": 0.5,
+        "macro_f1": 0.6666666666666666,
+        "per_class": {
+          "percent_of_charge": {
+            "support": 2,
+            "precision": 1.0,
+            "recall": 0.5,
+            "f1": 0.6666666666666666
+          }
+        }
+      },
+      "char_ngram_nb": {
+        "n": 2,
+        "coverage": 1.0,
+        "accuracy": 0.0,
+        "macro_f1": 0.0,
+        "per_class": {
+          "percent_of_charge": {
+            "support": 2,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        }
+      },
+      "shared_label_subset": {
+        "labels": [
+          "case_rate",
+          "fee_schedule",
+          "other",
+          "per_diem"
+        ],
+        "literal_rule": {
+          "n": 0,
+          "coverage": null,
+          "accuracy": null,
+          "macro_f1": null
+        },
+        "contextual_rule": {
+          "n": 0,
+          "coverage": null,
+          "accuracy": null,
+          "macro_f1": null
+        },
+        "char_ngram_nb": {
+          "n": 0,
+          "coverage": null,
+          "accuracy": null,
+          "macro_f1": null
+        }
+      }
+    },
+    "Berger Hospital": {
+      "train_n": 138,
+      "test_n": 28,
+      "train_labels": [
+        "case_rate",
+        "fee_schedule",
+        "other",
+        "per_diem",
+        "percent_of_charge"
+      ],
+      "test_labels": [
+        "other"
+      ],
+      "unseen_test_labels": [],
+      "literal_rule": {
+        "n": 28,
+        "coverage": 1.0,
+        "accuracy": 0.4642857142857143,
+        "macro_f1": 0.6341463414634146,
+        "per_class": {
+          "other": {
+            "support": 28,
+            "precision": 1.0,
+            "recall": 0.4642857142857143,
+            "f1": 0.6341463414634146
+          }
+        }
+      },
+      "contextual_rule_posthoc_not_validated": {
+        "n": 28,
+        "coverage": 1.0,
+        "accuracy": 0.4642857142857143,
+        "macro_f1": 0.6341463414634146,
+        "per_class": {
+          "other": {
+            "support": 28,
+            "precision": 1.0,
+            "recall": 0.4642857142857143,
+            "f1": 0.6341463414634146
+          }
+        }
+      },
+      "char_ngram_nb": {
+        "n": 28,
+        "coverage": 1.0,
+        "accuracy": 0.0,
+        "macro_f1": 0.0,
+        "per_class": {
+          "other": {
+            "support": 28,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        }
+      },
+      "shared_label_subset": {
+        "labels": [
+          "case_rate",
+          "fee_schedule",
+          "other",
+          "per_diem",
+          "percent_of_charge"
+        ],
+        "literal_rule": {
+          "n": 28,
+          "coverage": 1.0,
+          "accuracy": 0.4642857142857143,
+          "macro_f1": 0.6341463414634146,
+          "per_class": {
+            "other": {
+              "support": 28,
+              "precision": 1.0,
+              "recall": 0.4642857142857143,
+              "f1": 0.6341463414634146
+            }
+          }
+        },
+        "contextual_rule": {
+          "n": 28,
+          "coverage": 1.0,
+          "accuracy": 0.4642857142857143,
+          "macro_f1": 0.6341463414634146,
+          "per_class": {
+            "other": {
+              "support": 28,
+              "precision": 1.0,
+              "recall": 0.4642857142857143,
+              "f1": 0.6341463414634146
+            }
+          }
+        },
+        "char_ngram_nb": {
+          "n": 28,
+          "coverage": 1.0,
+          "accuracy": 0.0,
+          "macro_f1": 0.0,
+          "per_class": {
+            "other": {
+              "support": 28,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            }
+          }
+        }
+      }
+    },
+    "Martha's Vineyard Hospital": {
+      "train_n": 30,
+      "test_n": 136,
+      "train_labels": [
+        "other",
+        "percent_of_charge"
+      ],
+      "test_labels": [
+        "case_rate",
+        "fee_schedule",
+        "other",
+        "per_diem"
+      ],
+      "unseen_test_labels": [
+        "case_rate",
+        "fee_schedule",
+        "per_diem"
+      ],
+      "literal_rule": {
+        "n": 136,
+        "coverage": 1.0,
+        "accuracy": 0.08088235294117647,
+        "macro_f1": 0.24848484848484848,
+        "per_class": {
+          "case_rate": {
+            "support": 64,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "fee_schedule": {
+            "support": 4,
+            "precision": 0.03125,
+            "recall": 1.0,
+            "f1": 0.06060606060606061
+          },
+          "other": {
+            "support": 61,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "per_diem": {
+            "support": 7,
+            "precision": 0.875,
+            "recall": 1.0,
+            "f1": 0.9333333333333333
+          }
+        }
+      },
+      "contextual_rule_posthoc_not_validated": {
+        "n": 136,
+        "coverage": 1.0,
+        "accuracy": 0.5514705882352942,
+        "macro_f1": 0.5127450980392156,
+        "per_class": {
+          "case_rate": {
+            "support": 64,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "fee_schedule": {
+            "support": 4,
+            "precision": 0.0625,
+            "recall": 1.0,
+            "f1": 0.11764705882352941
+          },
+          "other": {
+            "support": 61,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "per_diem": {
+            "support": 7,
+            "precision": 0.875,
+            "recall": 1.0,
+            "f1": 0.9333333333333333
+          }
+        }
+      },
+      "char_ngram_nb": {
+        "n": 136,
+        "coverage": 1.0,
+        "accuracy": 0.0,
+        "macro_f1": 0.0,
+        "per_class": {
+          "case_rate": {
+            "support": 64,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "fee_schedule": {
+            "support": 4,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "other": {
+            "support": 61,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "per_diem": {
+            "support": 7,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        }
+      },
+      "shared_label_subset": {
+        "labels": [
+          "other",
+          "percent_of_charge"
+        ],
+        "literal_rule": {
+          "n": 61,
+          "coverage": 1.0,
+          "accuracy": 0.0,
+          "macro_f1": 0.0,
+          "per_class": {
+            "other": {
+              "support": 61,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            }
+          }
+        },
+        "contextual_rule": {
+          "n": 61,
+          "coverage": 1.0,
+          "accuracy": 0.0,
+          "macro_f1": 0.0,
+          "per_class": {
+            "other": {
+              "support": 61,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            }
+          }
+        },
+        "char_ngram_nb": {
+          "n": 61,
+          "coverage": 1.0,
+          "accuracy": 0.0,
+          "macro_f1": 0.0,
+          "per_class": {
+            "other": {
+              "support": 61,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            }
+          }
+        }
+      }
+    }
+  },
+  "pooled": {
+    "literal_rule": {
+      "n": 166,
+      "coverage": 0.9939759036144579,
+      "accuracy": 0.15060240963855423,
+      "macro_f1": 0.28009512170954853,
+      "per_class": {
+        "case_rate": {
+          "support": 64,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "fee_schedule": {
+          "support": 4,
+          "precision": 0.03007518796992481,
+          "recall": 1.0,
+          "f1": 0.058394160583941604
+        },
+        "other": {
+          "support": 89,
+          "precision": 1.0,
+          "recall": 0.14606741573033707,
+          "f1": 0.25490196078431376
+        },
+        "per_diem": {
+          "support": 7,
+          "precision": 0.875,
+          "recall": 1.0,
+          "f1": 0.9333333333333333
+        },
+        "percent_of_charge": {
+          "support": 2,
+          "precision": 0.09090909090909091,
+          "recall": 0.5,
+          "f1": 0.15384615384615385
+        }
+      }
+    },
+    "contextual_rule": {
+      "n": 166,
+      "coverage": 0.9939759036144579,
+      "accuracy": 0.536144578313253,
+      "macro_f1": 0.4903340978119382,
+      "per_class": {
+        "case_rate": {
+          "support": 64,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "fee_schedule": {
+          "support": 4,
+          "precision": 0.057971014492753624,
+          "recall": 1.0,
+          "f1": 0.1095890410958904
+        },
+        "other": {
+          "support": 89,
+          "precision": 1.0,
+          "recall": 0.14606741573033707,
+          "f1": 0.25490196078431376
+        },
+        "per_diem": {
+          "support": 7,
+          "precision": 0.875,
+          "recall": 1.0,
+          "f1": 0.9333333333333333
+        },
+        "percent_of_charge": {
+          "support": 2,
+          "precision": 0.09090909090909091,
+          "recall": 0.5,
+          "f1": 0.15384615384615385
+        }
+      }
+    },
+    "char_ngram_nb": {
+      "n": 166,
+      "coverage": 1.0,
+      "accuracy": 0.0,
+      "macro_f1": 0.0,
+      "per_class": {
+        "case_rate": {
+          "support": 64,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "fee_schedule": {
+          "support": 4,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "other": {
+          "support": 89,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "per_diem": {
+          "support": 7,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "percent_of_charge": {
+          "support": 2,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    }
+  }
+}

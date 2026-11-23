@@ -1,0 +1,205 @@
+{
+  "design": {
+    "reference_label": "CMS structured methodology field (weak reference; not human gold standard)",
+    "model_input": "algorithm + generic notes + payer-specific notes only",
+    "unit_for_primary_evaluation": "unique hospital-expression-methodology tuple",
+    "important_exclusion": "CMS synthetic example retained for parser checks but excluded from real-world metrics"
+  },
+  "real_world_corpus": {
+    "payer_records": 223372,
+    "records_with_nlp_text": 38203,
+    "unique_labeled_expressions": 166,
+    "by_hospital_records": {
+      "West Mercy Hospital": 39,
+      "Berger Hospital": 81404,
+      "Banner Churchill Community Hospital": 131516,
+      "Martha's Vineyard Hospital": 10452
+    },
+    "by_hospital_text_records": {
+      "West Mercy Hospital": 8,
+      "Berger Hospital": 28192,
+      "Banner Churchill Community Hospital": 9385,
+      "Martha's Vineyard Hospital": 626
+    },
+    "by_hospital_unique_expressions": {
+      "West Mercy Hospital": 8,
+      "Berger Hospital": 28,
+      "Banner Churchill Community Hospital": 2,
+      "Martha's Vineyard Hospital": 136
+    }
+  },
+  "rule_metrics_real_world_non_other": {
+    "literal_keyword_rules": {
+      "unique_expression_level": {
+        "n": 77,
+        "coverage": 0.987012987012987,
+        "accuracy_when_covered": 0.15789473684210525,
+        "macro_f1_with_abstentions_as_errors": 0.4444444444444444,
+        "per_class": {
+          "case_rate": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 64
+          },
+          "fee_schedule": {
+            "precision": 0.058823529411764705,
+            "recall": 1.0,
+            "f1": 0.1111111111111111,
+            "support": 4
+          },
+          "per_diem": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 7
+          },
+          "percent_of_charge": {
+            "precision": 1.0,
+            "recall": 0.5,
+            "f1": 0.6666666666666666,
+            "support": 2
+          }
+        }
+      },
+      "record_weighted": {
+        "n": 9457,
+        "coverage": 0.9672200486412181,
+        "accuracy_when_covered": 0.9915819394336941,
+        "macro_f1_with_abstentions_as_errors": 0.519323855003256,
+        "per_class": {
+          "case_rate": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 77
+          },
+          "fee_schedule": {
+            "precision": 0.04938271604938271,
+            "recall": 1.0,
+            "f1": 0.09411764705882353,
+            "support": 4
+          },
+          "per_diem": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 7
+          },
+          "percent_of_charge": {
+            "precision": 1.0,
+            "recall": 0.9669121571138862,
+            "f1": 0.9831777729542002,
+            "support": 9369
+          }
+        }
+      }
+    },
+    "contextual_development_rule": {
+      "unique_expression_level": {
+        "n": 77,
+        "coverage": 0.987012987012987,
+        "accuracy_when_covered": 1.0,
+        "macro_f1_with_abstentions_as_errors": 0.9166666666666666,
+        "per_class": {
+          "case_rate": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 64
+          },
+          "fee_schedule": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 4
+          },
+          "per_diem": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 7
+          },
+          "percent_of_charge": {
+            "precision": 1.0,
+            "recall": 0.5,
+            "f1": 0.6666666666666666,
+            "support": 2
+          }
+        }
+      },
+      "record_weighted": {
+        "n": 9457,
+        "coverage": 0.9672200486412181,
+        "accuracy_when_covered": 1.0,
+        "macro_f1_with_abstentions_as_errors": 0.99579444323855,
+        "per_class": {
+          "case_rate": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 77
+          },
+          "fee_schedule": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 4
+          },
+          "per_diem": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 7
+          },
+          "percent_of_charge": {
+            "precision": 1.0,
+            "recall": 0.9669121571138862,
+            "f1": 0.9831777729542002,
+            "support": 9369
+          }
+        }
+      },
+      "warning": "Developed and evaluated on the same corpus; descriptive only, not external validation."
+    }
+  },
+  "other_field_refinement_real_world": {
+    "unique_expression_flags": {
+      "external_reference": 6,
+      "percent_of_charge": 21,
+      "lesser_of": 9,
+      "fixed_dollar": 66,
+      "length_of_stay": 2,
+      "fee_schedule": 75,
+      "per_diem": 2,
+      "outlier_stop_loss": 62,
+      "hybrid_primary_mechanisms": 10,
+      "bundle_packaging": 16
+    },
+    "record_weighted_flags": {
+      "external_reference": 7106,
+      "percent_of_charge": 11210,
+      "lesser_of": 2330,
+      "fixed_dollar": 870,
+      "length_of_stay": 890,
+      "fee_schedule": 12289,
+      "per_diem": 897,
+      "outlier_stop_loss": 1427,
+      "hybrid_primary_mechanisms": 1879,
+      "bundle_packaging": 160
+    },
+    "note": "Flags are multi-label and therefore do not sum to the number of expressions or records."
+  },
+  "all_unique_expression_confusion": {
+    "other -> percent_of_charge": 10,
+    "other -> fee_schedule": 65,
+    "other -> other": 3,
+    "other -> hybrid": 10,
+    "percent_of_charge -> abstain": 1,
+    "percent_of_charge -> percent_of_charge": 1,
+    "case_rate -> fee_schedule": 64,
+    "fee_schedule -> fee_schedule": 4,
+    "per_diem -> per_diem": 7,
+    "other -> per_diem": 1
+  }
+}

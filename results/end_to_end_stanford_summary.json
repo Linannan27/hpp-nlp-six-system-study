@@ -1,0 +1,740 @@
+{
+  "case_design": {
+    "held_out_hospital": "Stanford Health Care Tri-Valley",
+    "raw_file": "data/raw/stanford_tri_valley.json",
+    "source_metadata": {
+      "hospital_name": "Stanford Health Care Tri-Valley",
+      "last_updated_on": "2026-04-01",
+      "version": "3.0.0"
+    },
+    "training_hospital_systems": [
+      "Banner Churchill Community Hospital",
+      "Berger Hospital",
+      "Martha's Vineyard Hospital",
+      "Orlando Health, Inc.",
+      "SOUTH MIAMI HOSPITAL"
+    ],
+    "training_templates": 114,
+    "held_out_templates": 20,
+    "held_out_raw_payer_records": 69094,
+    "held_out_text_bearing_records": 13325,
+    "mapping_completeness": 1.0,
+    "label_use": "Stanford expert-reviewed labels were hidden during fitting and used only for evaluation."
+  },
+  "why_134_templates": {
+    "six_system_payer_records": 2156830,
+    "six_system_text_bearing_records": 1455384,
+    "hospital_specific_mechanism_templates": 134,
+    "rationale": "Amounts, percentages, codes, and modifiers create repeated row instances of the same contractual mechanism. Template-level evaluation prevents duplicated formulas from dominating accuracy and leaking across splits."
+  },
+  "original_structured_methodology_for_text_rows": {
+    "other": 13325
+  },
+  "new_record_level_outputs": {
+    "primary_method_distribution": {
+      "fee_schedule": 1914,
+      "hybrid": 9842,
+      "percent_of_charge": 544,
+      "unclear": 136,
+      "case_rate": 889
+    },
+    "computability_distribution": {
+      "conditional_external": 13189,
+      "not_computable": 136
+    },
+    "attribute_positive_record_counts_nonexclusive": {
+      "fee_schedule_reference": 4780,
+      "external_reference": 12781,
+      "case_rate": 11557,
+      "per_diem": 9779,
+      "percent_of_charge": 11275,
+      "fixed_dollar": 11139,
+      "lesser_of": 10114,
+      "length_of_stay": 9779,
+      "outlier_stop_loss": 8890
+    },
+    "records_with_non_unclear_primary": 13189,
+    "records_routed_to_review": 2050,
+    "review_rule": "primary confidence < 0.5, unclear primary, or not-computable/unclear computability"
+  },
+  "illustrative_examples": [
+    {
+      "sample_id": "EXP-9AD0D67E0FC1",
+      "source_occurrence_count": 1778,
+      "original_structured_methodology": "other",
+      "raw_expression": "[MSDRG Base Rate: FEE SCHEDULE]",
+      "predicted_primary_method": "fee_schedule",
+      "fixed_rule_primary_method": "fee_schedule",
+      "primary_confidence": 0.7374184501044615,
+      "predicted_attributes": [
+        "fee_schedule_reference",
+        "case_rate",
+        "external_reference"
+      ],
+      "fixed_rule_attributes": [
+        "fee_schedule_reference"
+      ],
+      "predicted_computability": "conditional_external",
+      "expert_reviewed_primary_method": "fee_schedule"
+    },
+    {
+      "sample_id": "EXP-F6E2F5F54778",
+      "source_occurrence_count": 1778,
+      "original_structured_methodology": "other",
+      "raw_expression": "[Stop Loss: Total Charges > 310372 | Excess % of Charge: 74.9 | Not to Exceed Dollar: 38905] [Lesser Than Charges paid at %: 100] [Medical-Per Diem: 9240] [Surgical-Per Diem: 9240] [ICU-Per Diem: 9240] [CCU-Per Diem: 9240] [Step Down-Per Diem: 9240] [C-Section 2 day stay-Case Rate: 18483 Days: 2 Additional Days: 9240] [Normal vag. Del. 2 day stay-Case Rate: 18483 Days: 2 Additional Days: 9240] [Nursery  Level 1- Boarder-Per Diem: 2595] [Nursery  Level 2-Per Diem: 9240] [Nursery  Level 3-Per Diem: 9240] [Nursery  Level 4-NICU-Per Diem: 9240] [SNF-Per Diem: 3241] [IP Prosthetics/Implants/Devices ($): 0 Charge Threshold 3790 (%BC): 30.5] [Bariatric Surgery-Case Rate: 49770 Days: 3 Additional Days: 9240] [Cardiac Cath-Case Rate: 16212 Days: 1 Additional Days: 9240] [Cardiac Surgery-Case Rate: 106128 Days: 5 Additional Days: 9240] [PTCA-Case Rate: 20428 Days: 1 Additional Days: 9240]",
+      "predicted_primary_method": "hybrid",
+      "fixed_rule_primary_method": "hybrid",
+      "primary_confidence": 0.5293665824993403,
+      "predicted_attributes": [
+        "case_rate",
+        "per_diem",
+        "percent_of_charge",
+        "fixed_dollar",
+        "outlier_stop_loss",
+        "lesser_of",
+        "external_reference",
+        "length_of_stay"
+      ],
+      "fixed_rule_attributes": [
+        "case_rate",
+        "per_diem",
+        "percent_of_charge",
+        "outlier_stop_loss",
+        "lesser_of"
+      ],
+      "predicted_computability": "conditional_external",
+      "expert_reviewed_primary_method": "hybrid"
+    },
+    {
+      "sample_id": "EXP-20F9189733A3",
+      "source_occurrence_count": 136,
+      "original_structured_methodology": "other",
+      "raw_expression": "[Outpatient Services: Payer leverages state specific Medicaid payment methodology. Available, referenceable algorithm logic found here: https://www.dhcs.ca.gov/provgovpart/]",
+      "predicted_primary_method": "unclear",
+      "fixed_rule_primary_method": "unclear",
+      "primary_confidence": 0.868760098057948,
+      "predicted_attributes": [
+        "fee_schedule_reference",
+        "external_reference"
+      ],
+      "fixed_rule_attributes": [
+        "external_reference"
+      ],
+      "predicted_computability": "not_computable",
+      "expert_reviewed_primary_method": "unclear"
+    }
+  ],
+  "accuracy": {
+    "fixed_rules_primary_template_level": {
+      "n_units": 20,
+      "weighted_n_records": null,
+      "accuracy": 0.95,
+      "macro_f1_fixed_label_set": 0.63668430335097,
+      "per_class": {
+        "case_rate": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 0.0
+        },
+        "fee_schedule": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 2.0
+        },
+        "hybrid": {
+          "precision": 1.0,
+          "recall": 0.9285714285714286,
+          "f1-score": 0.9629629629629629,
+          "support": 14.0
+        },
+        "per_diem": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 0.0
+        },
+        "percent_of_charge": {
+          "precision": 0.75,
+          "recall": 1.0,
+          "f1-score": 0.8571428571428571,
+          "support": 3.0
+        },
+        "unclear": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 1.0
+        },
+        "accuracy": 0.95,
+        "macro avg": {
+          "precision": 0.625,
+          "recall": 0.6547619047619048,
+          "f1-score": 0.63668430335097,
+          "support": 20.0
+        },
+        "weighted avg": {
+          "precision": 0.9625,
+          "recall": 0.95,
+          "f1-score": 0.9526455026455025,
+          "support": 20.0
+        }
+      }
+    },
+    "fixed_rules_primary_record_weighted_descriptive": {
+      "n_units": 20,
+      "weighted_n_records": 13325,
+      "accuracy": 0.9897936210131332,
+      "macro_f1_fixed_label_set": 0.6418076629670296,
+      "per_class": {
+        "case_rate": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 0.0
+        },
+        "fee_schedule": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 1914.0
+        },
+        "hybrid": {
+          "precision": 1.0,
+          "recall": 0.9874850464709671,
+          "f1-score": 0.9937031206593203,
+          "support": 10867.0
+        },
+        "per_diem": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 0.0
+        },
+        "percent_of_charge": {
+          "precision": 0.75,
+          "recall": 1.0,
+          "f1-score": 0.8571428571428571,
+          "support": 408.0
+        },
+        "unclear": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 136.0
+        },
+        "accuracy": 0.9897936210131332,
+        "macro avg": {
+          "precision": 0.625,
+          "recall": 0.6645808410784945,
+          "f1-score": 0.6418076629670296,
+          "support": 13325.0
+        },
+        "weighted avg": {
+          "precision": 0.9923452157598499,
+          "recall": 0.9897936210131332,
+          "f1-score": 0.990490513915131,
+          "support": 13325.0
+        }
+      }
+    },
+    "primary_template_level": {
+      "n_units": 20,
+      "weighted_n_records": null,
+      "accuracy": 0.9,
+      "macro_f1_fixed_label_set": 0.63003663003663,
+      "per_class": {
+        "case_rate": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 0.0
+        },
+        "fee_schedule": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 2.0
+        },
+        "hybrid": {
+          "precision": 1.0,
+          "recall": 0.8571428571428571,
+          "f1-score": 0.9230769230769231,
+          "support": 14.0
+        },
+        "per_diem": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 0.0
+        },
+        "percent_of_charge": {
+          "precision": 0.75,
+          "recall": 1.0,
+          "f1-score": 0.8571428571428571,
+          "support": 3.0
+        },
+        "unclear": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 1.0
+        },
+        "accuracy": 0.9,
+        "macro avg": {
+          "precision": 0.625,
+          "recall": 0.6428571428571429,
+          "f1-score": 0.63003663003663,
+          "support": 20.0
+        },
+        "weighted avg": {
+          "precision": 0.9625,
+          "recall": 0.9,
+          "f1-score": 0.9247252747252748,
+          "support": 20.0
+        }
+      }
+    },
+    "primary_record_weighted_descriptive": {
+      "n_units": 20,
+      "weighted_n_records": 13325,
+      "accuracy": 0.9230769230769231,
+      "macro_f1_fixed_label_set": 0.6346079114440696,
+      "per_class": {
+        "case_rate": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 0.0
+        },
+        "fee_schedule": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 1914.0
+        },
+        "hybrid": {
+          "precision": 1.0,
+          "recall": 0.9056777399466274,
+          "f1-score": 0.9505046115215606,
+          "support": 10867.0
+        },
+        "per_diem": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 0.0
+        },
+        "percent_of_charge": {
+          "precision": 0.75,
+          "recall": 1.0,
+          "f1-score": 0.8571428571428571,
+          "support": 408.0
+        },
+        "unclear": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 136.0
+        },
+        "accuracy": 0.9230769230769231,
+        "macro avg": {
+          "precision": 0.625,
+          "recall": 0.6509462899911046,
+          "f1-score": 0.6346079114440696,
+          "support": 13325.0
+        },
+        "weighted avg": {
+          "precision": 0.9923452157598499,
+          "recall": 0.9230769230769231,
+          "f1-score": 0.9552606303278863,
+          "support": 13325.0
+        }
+      }
+    },
+    "fixed_rules_attributes_template_level": {
+      "known_attribute_cells": 191,
+      "weighted_known_record_cells": null,
+      "hamming_accuracy": 0.8534031413612565,
+      "micro_positive_f1": 0.8333333333333334,
+      "macro_attribute_f1": 0.6725728045068375,
+      "per_attribute": {
+        "attr_fee_schedule_reference": {
+          "n_known_templates": 19,
+          "positive_support_templates": 9,
+          "accuracy": 1.0,
+          "positive_f1": 1.0
+        },
+        "attr_case_rate": {
+          "n_known_templates": 19,
+          "positive_support_templates": 8,
+          "accuracy": 1.0,
+          "positive_f1": 1.0
+        },
+        "attr_per_diem": {
+          "n_known_templates": 19,
+          "positive_support_templates": 8,
+          "accuracy": 1.0,
+          "positive_f1": 1.0
+        },
+        "attr_percent_of_charge": {
+          "n_known_templates": 19,
+          "positive_support_templates": 17,
+          "accuracy": 0.9473684210526315,
+          "positive_f1": 0.9696969696969697
+        },
+        "attr_fixed_dollar": {
+          "n_known_templates": 19,
+          "positive_support_templates": 16,
+          "accuracy": 0.5263157894736842,
+          "positive_f1": 0.6086956521739131
+        },
+        "attr_outlier_stop_loss": {
+          "n_known_templates": 19,
+          "positive_support_templates": 7,
+          "accuracy": 1.0,
+          "positive_f1": 1.0
+        },
+        "attr_lesser_of": {
+          "n_known_templates": 19,
+          "positive_support_templates": 15,
+          "accuracy": 0.9473684210526315,
+          "positive_f1": 0.9655172413793104
+        },
+        "attr_bundle_packaging": {
+          "n_known_templates": 19,
+          "positive_support_templates": 0,
+          "accuracy": 1.0,
+          "positive_f1": 0.0
+        },
+        "attr_external_reference": {
+          "n_known_templates": 20,
+          "positive_support_templates": 10,
+          "accuracy": 0.55,
+          "positive_f1": 0.18181818181818182
+        },
+        "attr_length_of_stay": {
+          "n_known_templates": 19,
+          "positive_support_templates": 8,
+          "accuracy": 0.5789473684210527,
+          "positive_f1": 0.0
+        }
+      }
+    },
+    "fixed_rules_attributes_record_weighted_descriptive": {
+      "known_attribute_cells": 191,
+      "weighted_known_record_cells": 132026,
+      "hamming_accuracy": 0.8078938996864254,
+      "micro_positive_f1": 0.8124967656560728,
+      "macro_attribute_f1": 0.620561977257648,
+      "per_attribute": {
+        "attr_fee_schedule_reference": {
+          "n_known_templates": 19,
+          "positive_support_templates": 9,
+          "accuracy": 1.0,
+          "positive_f1": 1.0
+        },
+        "attr_case_rate": {
+          "n_known_templates": 19,
+          "positive_support_templates": 8,
+          "accuracy": 1.0,
+          "positive_f1": 1.0
+        },
+        "attr_per_diem": {
+          "n_known_templates": 19,
+          "positive_support_templates": 8,
+          "accuracy": 1.0,
+          "positive_f1": 1.0
+        },
+        "attr_percent_of_charge": {
+          "n_known_templates": 19,
+          "positive_support_templates": 17,
+          "accuracy": 0.932595344605353,
+          "positive_f1": 0.9589584968376345
+        },
+        "attr_fixed_dollar": {
+          "n_known_templates": 19,
+          "positive_support_templates": 16,
+          "accuracy": 0.2482371673364167,
+          "positive_f1": 0.19801019170104345
+        },
+        "attr_outlier_stop_loss": {
+          "n_known_templates": 19,
+          "positive_support_templates": 7,
+          "accuracy": 1.0,
+          "positive_f1": 1.0
+        },
+        "attr_lesser_of": {
+          "n_known_templates": 19,
+          "positive_support_templates": 15,
+          "accuracy": 0.9896883766775343,
+          "positive_f1": 0.993321547829503
+        },
+        "attr_bundle_packaging": {
+          "n_known_templates": 19,
+          "positive_support_templates": 0,
+          "accuracy": 1.0,
+          "positive_f1": 0.0
+        },
+        "attr_external_reference": {
+          "n_known_templates": 20,
+          "positive_support_templates": 10,
+          "accuracy": 0.6514821763602251,
+          "positive_f1": 0.05532953620829943
+        },
+        "attr_length_of_stay": {
+          "n_known_templates": 19,
+          "positive_support_templates": 8,
+          "accuracy": 0.2585487906588824,
+          "positive_f1": 0.0
+        }
+      }
+    },
+    "attributes_template_level": {
+      "known_attribute_cells": 191,
+      "weighted_known_record_cells": null,
+      "hamming_accuracy": 0.9581151832460733,
+      "micro_positive_f1": 0.9603960396039604,
+      "macro_attribute_f1": 0.8675924481198315,
+      "per_attribute": {
+        "attr_fee_schedule_reference": {
+          "n_known_templates": 19,
+          "positive_support_templates": 9,
+          "accuracy": 1.0,
+          "positive_f1": 1.0
+        },
+        "attr_case_rate": {
+          "n_known_templates": 19,
+          "positive_support_templates": 8,
+          "accuracy": 0.9473684210526315,
+          "positive_f1": 0.9411764705882353
+        },
+        "attr_per_diem": {
+          "n_known_templates": 19,
+          "positive_support_templates": 8,
+          "accuracy": 1.0,
+          "positive_f1": 1.0
+        },
+        "attr_percent_of_charge": {
+          "n_known_templates": 19,
+          "positive_support_templates": 17,
+          "accuracy": 1.0,
+          "positive_f1": 1.0
+        },
+        "attr_fixed_dollar": {
+          "n_known_templates": 19,
+          "positive_support_templates": 16,
+          "accuracy": 1.0,
+          "positive_f1": 1.0
+        },
+        "attr_outlier_stop_loss": {
+          "n_known_templates": 19,
+          "positive_support_templates": 7,
+          "accuracy": 1.0,
+          "positive_f1": 1.0
+        },
+        "attr_lesser_of": {
+          "n_known_templates": 19,
+          "positive_support_templates": 15,
+          "accuracy": 0.9473684210526315,
+          "positive_f1": 0.9655172413793104
+        },
+        "attr_bundle_packaging": {
+          "n_known_templates": 19,
+          "positive_support_templates": 0,
+          "accuracy": 1.0,
+          "positive_f1": 0.0
+        },
+        "attr_external_reference": {
+          "n_known_templates": 20,
+          "positive_support_templates": 10,
+          "accuracy": 0.7,
+          "positive_f1": 0.7692307692307693
+        },
+        "attr_length_of_stay": {
+          "n_known_templates": 19,
+          "positive_support_templates": 8,
+          "accuracy": 1.0,
+          "positive_f1": 1.0
+        }
+      }
+    },
+    "attributes_record_weighted_descriptive": {
+      "known_attribute_cells": 191,
+      "weighted_known_record_cells": 132026,
+      "hamming_accuracy": 0.924901155832942,
+      "micro_positive_f1": 0.9417699811479213,
+      "macro_attribute_f1": 0.8454376347290428,
+      "per_attribute": {
+        "attr_fee_schedule_reference": {
+          "n_known_templates": 19,
+          "positive_support_templates": 9,
+          "accuracy": 1.0,
+          "positive_f1": 1.0
+        },
+        "attr_case_rate": {
+          "n_known_templates": 19,
+          "positive_support_templates": 8,
+          "accuracy": 0.8651906892107059,
+          "positive_f1": 0.9166666666666666
+        },
+        "attr_per_diem": {
+          "n_known_templates": 19,
+          "positive_support_templates": 8,
+          "accuracy": 1.0,
+          "positive_f1": 1.0
+        },
+        "attr_percent_of_charge": {
+          "n_known_templates": 19,
+          "positive_support_templates": 17,
+          "accuracy": 1.0,
+          "positive_f1": 1.0
+        },
+        "attr_fixed_dollar": {
+          "n_known_templates": 19,
+          "positive_support_templates": 16,
+          "accuracy": 1.0,
+          "positive_f1": 1.0
+        },
+        "attr_outlier_stop_loss": {
+          "n_known_templates": 19,
+          "positive_support_templates": 7,
+          "accuracy": 1.0,
+          "positive_f1": 1.0
+        },
+        "attr_lesser_of": {
+          "n_known_templates": 19,
+          "positive_support_templates": 15,
+          "accuracy": 0.9896883766775343,
+          "positive_f1": 0.993321547829503
+        },
+        "attr_bundle_packaging": {
+          "n_known_templates": 19,
+          "positive_support_templates": 0,
+          "accuracy": 1.0,
+          "positive_f1": 0.0
+        },
+        "attr_external_reference": {
+          "n_known_templates": 20,
+          "positive_support_templates": 10,
+          "accuracy": 0.3995497185741088,
+          "positive_f1": 0.54438813279426
+        },
+        "attr_length_of_stay": {
+          "n_known_templates": 19,
+          "positive_support_templates": 8,
+          "accuracy": 1.0,
+          "positive_f1": 1.0
+        }
+      }
+    },
+    "computability_template_level": {
+      "n_units": 20,
+      "weighted_n_records": null,
+      "accuracy": 1.0,
+      "macro_f1_fixed_label_set": 0.5,
+      "per_class": {
+        "direct": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 0.0
+        },
+        "conditional_external": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 19.0
+        },
+        "not_computable": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 1.0
+        },
+        "unclear": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 0.0
+        },
+        "accuracy": 1.0,
+        "macro avg": {
+          "precision": 0.5,
+          "recall": 0.5,
+          "f1-score": 0.5,
+          "support": 20.0
+        },
+        "weighted avg": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 20.0
+        }
+      }
+    },
+    "computability_record_weighted_descriptive": {
+      "n_units": 20,
+      "weighted_n_records": 13325,
+      "accuracy": 1.0,
+      "macro_f1_fixed_label_set": 0.5,
+      "per_class": {
+        "direct": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 0.0
+        },
+        "conditional_external": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 13189.0
+        },
+        "not_computable": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 136.0
+        },
+        "unclear": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 0.0
+        },
+        "accuracy": 1.0,
+        "macro avg": {
+          "precision": 0.5,
+          "recall": 0.5,
+          "f1-score": 0.5,
+          "support": 13325.0
+        },
+        "weighted avg": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 13325.0
+        }
+      }
+    },
+    "interpretation": "Template metrics are the inferential evaluation. Record-weighted metrics describe deployment impact but are not independent observations because many records reuse one template."
+  },
+  "attribute_model_status": {
+    "attr_fee_schedule_reference": "fitted",
+    "attr_case_rate": "fitted",
+    "attr_per_diem": "fitted",
+    "attr_percent_of_charge": "fitted",
+    "attr_fixed_dollar": "fitted",
+    "attr_outlier_stop_loss": "fitted",
+    "attr_lesser_of": "fitted",
+    "attr_bundle_packaging": "fitted",
+    "attr_external_reference": "fitted",
+    "attr_length_of_stay": "fitted"
+  },
+  "outputs": {
+    "template_predictions": "results/end_to_end_stanford_template_predictions.csv",
+    "enriched_text_records": "data/derived/stanford_enriched_text_records.csv"
+  }
+}
