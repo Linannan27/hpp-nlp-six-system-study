@@ -1,0 +1,111 @@
+{
+  "sources": [
+    {
+      "hospital_name": "West Mercy Hospital",
+      "last_updated_on": "2026-04-01",
+      "version": "3.0.0",
+      "local_file": "cms_v3_example.json",
+      "payer_records_extracted": 39
+    },
+    {
+      "hospital_name": "Berger Hospital",
+      "last_updated_on": "2026-04-01",
+      "version": "3.0.0",
+      "local_file": "ohiohealth_berger.json",
+      "payer_records_extracted": 81404
+    },
+    {
+      "hospital_name": "Banner Churchill Community Hospital",
+      "last_updated_on": "2026-09-22",
+      "version": "3.0.0",
+      "location_name": "Banner Churchill Community Hospital",
+      "hospital_address": "801 East Williams Avenue, Fallon, NV 89406",
+      "type_2_npi": "1265811251|1356230205",
+      "license_number|NV": "638-RUH-43",
+      "attester_name": "Katie LeBlanc",
+      "To the best of its knowledge and belief, this hospital has included all applicable standard charge information in accordance with the requirements of 45 CFR 180.50, and the information encoded is true, accurate, and complete as of the date in the file. This hospital has included all payer-specific negotiated charges in dollars that can be expressed as a dollar amount. For payer-specific negotiated charges that cannot be expressed as a dollar amount in the machine-readable file or not knowable in advance, the hospital attests that the payer-specific negotiated charge is based on a contractual algorithm, percentage or formula that precludes the provision of a dollar amount and has provided all necessary information available to the hospital for the public to be able to derive the dollar amount, including, but not limited to, the specific fee schedule or components referenced in such percentage, algorithm or formula.": "true",
+      "local_file": "banner_churchill.csv",
+      "payer_records_extracted": 131516
+    },
+    {
+      "hospital_name": "Martha's Vineyard Hospital",
+      "last_updated_on": "2026-03-27",
+      "version": "3.0.0",
+      "location_name": "Martha's Vineyard Hospital",
+      "hospital_address": "1 Hospital Rd Oak Bluffs MA 02557-1477",
+      "license_number|MA": "2042",
+      "type_2_npi": "1194866210",
+      "To the best of its knowledge and belief, this hospital has included all applicable standard charge information in accordance with the requirements of 45 CFR 180.50, and the information encoded is true, accurate, and complete as of the date in the file. This hospital has included all payer-specific negotiated charges in dollars that can be expressed as a dollar amount. For payer-specific negotiated charges that cannot be expressed as a dollar amount in the machine-readable file or not knowable in advance, the hospital attests that the payer-specific negotiated charge is based on a contractual algorithm, percentage or formula that precludes the provision of a dollar amount and has provided all necessary information available to the hospital for the public to be able to derive the dollar amount, including, but not limited to, the specific fee schedule or components referenced in such percentage, algorithm or formula.": "true",
+      "attester_name": "Daniel Morash",
+      "local_file": "042104691_Marthas-Vineyard-Hospital_StandardCharges.csv",
+      "payer_records_extracted": 10452
+    }
+  ],
+  "total_payer_records": 223411,
+  "overall_methodology_counts": {
+    "fee schedule": 53241,
+    "case rate": 86,
+    "per diem": 114,
+    "other": 28735,
+    "percent of total billed charges": 141219,
+    "missing": 16
+  },
+  "by_hospital": {
+    "Banner Churchill Community Hospital": {
+      "payer_records": 131516,
+      "methodology_counts": {
+        "percent of total billed charges": 131391,
+        "per diem": 102,
+        "fee schedule": 7,
+        "missing": 16
+      },
+      "nonempty_algorithm": 0,
+      "nonempty_generic_notes": 9385,
+      "nonempty_payer_notes": 0,
+      "nonempty_nlp_text": 9385,
+      "unique_nlp_text": 14
+    },
+    "Berger Hospital": {
+      "payer_records": 81404,
+      "methodology_counts": {
+        "fee schedule": 53212,
+        "other": 28192
+      },
+      "nonempty_algorithm": 28192,
+      "nonempty_generic_notes": 0,
+      "nonempty_payer_notes": 0,
+      "nonempty_nlp_text": 28192,
+      "unique_nlp_text": 28
+    },
+    "Martha's Vineyard Hospital": {
+      "payer_records": 10452,
+      "methodology_counts": {
+        "percent of total billed charges": 9826,
+        "case rate": 77,
+        "other": 538,
+        "fee schedule": 4,
+        "per diem": 7
+      },
+      "nonempty_algorithm": 626,
+      "nonempty_generic_notes": 545,
+      "nonempty_payer_notes": 0,
+      "nonempty_nlp_text": 626,
+      "unique_nlp_text": 136
+    },
+    "West Mercy Hospital": {
+      "payer_records": 39,
+      "methodology_counts": {
+        "fee schedule": 18,
+        "case rate": 9,
+        "per diem": 5,
+        "other": 5,
+        "percent of total billed charges": 2
+      },
+      "nonempty_algorithm": 8,
+      "nonempty_generic_notes": 0,
+      "nonempty_payer_notes": 0,
+      "nonempty_nlp_text": 8,
+      "unique_nlp_text": 8
+    }
+  }
+}

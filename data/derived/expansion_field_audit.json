@@ -1,0 +1,90 @@
+{
+  "sources": [
+    {
+      "hospital_name": "Orlando Health, Inc.",
+      "last_updated_on": "2026-04-01",
+      "version": "3.0.0",
+      "source_format": "json",
+      "local_file": "orlando_regional_medical_center.json",
+      "file_bytes": 90570353,
+      "sha256": "dea063b3f788f8698313761747a563771510750c43d91125d6ebe36021c2bfe3",
+      "payer_records_extracted": 340815
+    },
+    {
+      "hospital_name": "Stanford Health Care Tri-Valley",
+      "last_updated_on": "2026-04-01",
+      "version": "3.0.0",
+      "source_format": "json",
+      "local_file": "stanford_tri_valley.json",
+      "file_bytes": 43065577,
+      "sha256": "57add70c54230e430986c15a577777920ec0accbbd22090d77f12ef46260ef1b",
+      "payer_records_extracted": 69094
+    },
+    {
+      "hospital_name": "SOUTH MIAMI HOSPITAL",
+      "last_updated_on": "2026-03-30",
+      "version": "3.0.0",
+      "source_format": "csv",
+      "local_file": "590872594_south-miami-hospital_standardcharges.csv",
+      "file_bytes": 520665559,
+      "sha256": "66b1f33a846b7ad4c6d912cdf3ef540913984e1623c68e512234e195f9098e46",
+      "payer_records_extracted": 1523549
+    }
+  ],
+  "total_payer_records": 1933458,
+  "overall_methodology_counts": {
+    "fee schedule": 529444,
+    "percent of total billed charges": 1307869,
+    "other": 90798,
+    "case rate": 5347
+  },
+  "by_hospital": {
+    "Orlando Health, Inc.": {
+      "payer_records": 340815,
+      "methodology_counts": {
+        "fee schedule": 249599,
+        "percent of total billed charges": 13863,
+        "other": 77353
+      },
+      "nonempty_algorithm": 77353,
+      "nonempty_generic_notes": 0,
+      "nonempty_payer_notes": 0,
+      "nonempty_nlp_text": 77353,
+      "unique_mechanism_templates": 48
+    },
+    "SOUTH MIAMI HOSPITAL": {
+      "payer_records": 1523549,
+      "methodology_counts": {
+        "fee schedule": 224076,
+        "percent of total billed charges": 1294006,
+        "case rate": 5347,
+        "other": 120
+      },
+      "nonempty_algorithm": 32379,
+      "nonempty_generic_notes": 1326503,
+      "nonempty_payer_notes": 0,
+      "nonempty_nlp_text": 1326503,
+      "unique_mechanism_templates": 32
+    },
+    "Stanford Health Care Tri-Valley": {
+      "payer_records": 69094,
+      "methodology_counts": {
+        "fee schedule": 55769,
+        "other": 13325
+      },
+      "nonempty_algorithm": 13325,
+      "nonempty_generic_notes": 0,
+      "nonempty_payer_notes": 0,
+      "nonempty_nlp_text": 13325,
+      "unique_mechanism_templates": 20
+    }
+  },
+  "annotation_packet": {
+    "hospital_systems": 3,
+    "unique_expression_rows": 100,
+    "path": "annotations/expansion_human_review.csv",
+    "annotator_A_path": "annotations/expansion_annotation_A_BLINDED.csv",
+    "annotator_B_path": "annotations/expansion_annotation_B_BLINDED.csv",
+    "weak_reference_path": "annotations/expansion_weak_reference_DO_NOT_GIVE_ANNOTATORS.csv"
+  }
+}
